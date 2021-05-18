@@ -7,7 +7,6 @@
 
  go
 
- 
 -- schema
 if not exists (select * from sys.schemas where name='EM') -- EM -> EVENT_MANAGEMENT
 begin
@@ -111,6 +110,59 @@ foreign key(id_soundcheck) references EM.SOUNDCHECK(id) on delete set null on up
 ) -- como check/ver que datatime inicio concerto é dps datetime inicio do evento?
 
 go
+
+create table EM.COMITIVA(
+id					id				not null,
+email				email,
+telefone			telefone,
+id_banda			id,
+primary key(id),
+foreign key(id_banda) references EM.BANDA(id) on delete set null on update cascade
+)
+
+create table EM.PESSOA(
+numCC				cc				not null,
+email				email,
+nome				name,
+sexo				char(1),
+id_comitiva			id
+primary key (numCC),
+foreign key (id_comitiva) references EM.COMITIVA(id) on delete set null on update cascade
+)
+
+create table EM.ACOMPANHANTE(
+numCC				cc				not null,
+tipoAcomp			varchar(200),
+primary key (numCC)
+foreign key (numCC) references EM.PESSOA(numCC) on delete cascade on update cascade
+)
+
+create table EM.TECNICO(
+numCC				cc				not null,
+tipoTecn			varchar(200),
+primary key (numCC),
+foreign key (numCC) references EM.PESSOA(numCC) on delete cascade on update cascade
+)
+
+create table EM.MUSICO(
+numCC				cc				not null,
+nomeArst			name,
+id_banda			id,
+primary key(numCC),
+foreign key(numCC) references EM.PESSOA(numCC) on delete cascade on update cascade
+primary key(id_banda) references EM.BANDA(num)
+)
+
+create table EM.INSTRUMENTO(
+id					id				not null,
+marca				name,
+fabricante			name,
+modelo				name,
+musicoCC			cc,
+famInstrumento		name,
+primary key(id),
+foreign key (musicoCC) references EM.MUSICO(numCC) on delete set null on update cascade
+)
 
 
 
