@@ -21,13 +21,7 @@ Acompanhante: chave - numCC
 Musico: chave - numCC
 	numCC -> NomeArtistico, id_banda
 Instrumento: chave - ID
-	ID -> familia, CC_musico
-	fabricante -> modelo, marca
-	
-	R1(ID, familia, CC_musico)
-		ID -> familia, CC_musico
-	R2(fabricante, modelo, marca)
-		fabricante -> modelo, marca
+	ID -> familia, CC_musico, fabricante, modelo, marca
 Refeição: chave - ID
 	ID -> nome, id_evento, NIF_empresa, prato, sobremesa, bebida
 EmpresaCatering: chave - ID
