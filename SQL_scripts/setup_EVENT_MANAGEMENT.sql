@@ -18,17 +18,22 @@ go
 -- types
 if not exists( select * from sys.types where name = 'id')
 begin
-	create type id from CHAR(20)
+	create type id from varchar(20)
 end
 
-if not exists( select * from sys.types where name = 'name')
+if not exists( select * from sys.types where name = 'str150')
 begin
-	create type name from varchar(150)
+	create type str150 from varchar(150)
+end
+
+if not exists( select * from sys.types where name = 'str250')
+begin
+	create type str250 from varchar(250)
 end
 
 if not exists( select * from sys.types where name = 'cc')
 begin
-	create type cc from char(12)
+	create type cc from varchar(12)
 end
 
 if not exists( select * from sys.types where name = 'email')
@@ -38,36 +43,36 @@ end
 
 if not exists( select * from sys.types where name = 'telefone')
 begin
-	create type telefone from char(12)
+	create type telefone from varchar(12)
 end
 
 go 
 --tables
 create table EM.PROMOTOR(
 numCC				cc				not null,
-nome				name,
+nome				str150,
 email				email,			--unique?
-telefone			telefone
+telefone			telefone		check (telefone like '%[^0-9]%')
 primary key (numCC)
 )
 
 
 create table EM.STAGEMANAGER(
 numCC				cc				not null,
-nome				name,
+nome				str150,
 email				email,			--unique?
-telefone			telefone,
+telefone			telefone		check (telefone like '%[^0-9]%'),
 primary key(numCC)
 )
 
 
 create table EM.EVENTO(
 id					id				not null,
-nome				name			not null,
+nome				str150			not null,
 numdias				int									check (numdias > 0),
 dataini				date			not null,
 datafim				date,
-numbilhetes			int,
+numbilhetes			int				DEFAULT 0,
 cc_promotor			cc,
 dataproposta		date,
 cc_stageManager		cc,
@@ -81,8 +86,8 @@ check (dataini < datafim)
 
 create table EM.BANDA(
 id					id				not null,
-nome				name			not null,
-telefone			telefone,
+nome				str150			not null,
+telefone			telefone		check (telefone like '%[^0-9]%'),
 email				email,
 numElem				int,
 genero				varchar(200)
@@ -109,12 +114,10 @@ foreign key(id_evento) references EM.EVENTO(id) on delete set null on update cas
 foreign key(id_soundcheck) references EM.SOUNDCHECK(id) on delete set null on update cascade,
 ) -- como check/ver que datatime inicio concerto é dps datetime inicio do evento?
 
-go
-
 create table EM.COMITIVA(
 id					id				not null,
 email				email,
-telefone			telefone,
+telefone			telefone		check (telefone like '%[^0-9]%'),
 id_banda			id,
 primary key(id),
 foreign key(id_banda) references EM.BANDA(id) on delete set null on update cascade
@@ -123,7 +126,7 @@ foreign key(id_banda) references EM.BANDA(id) on delete set null on update casca
 create table EM.PESSOA(
 numCC				cc				not null,
 email				email,
-nome				name,
+nome				str150,
 sexo				char(1),
 id_comitiva			id
 primary key (numCC),
@@ -132,37 +135,61 @@ foreign key (id_comitiva) references EM.COMITIVA(id) on delete set null on updat
 
 create table EM.ACOMPANHANTE(
 numCC				cc				not null,
-tipoAcomp			varchar(200),
-primary key (numCC)
+tipoAcomp			str150,
+primary key (numCC),
 foreign key (numCC) references EM.PESSOA(numCC) on delete cascade on update cascade
 )
 
 create table EM.TECNICO(
 numCC				cc				not null,
-tipoTecn			varchar(200),
+tipoTecn			str150,
 primary key (numCC),
 foreign key (numCC) references EM.PESSOA(numCC) on delete cascade on update cascade
 )
 
 create table EM.MUSICO(
 numCC				cc				not null,
-nomeArst			name,
+nomeArst			str150,
 id_banda			id,
 primary key(numCC),
+foreign key(id_banda) references EM.BANDA(id),
 foreign key(numCC) references EM.PESSOA(numCC) on delete cascade on update cascade
-primary key(id_banda) references EM.BANDA(num)
+
 )
 
 create table EM.INSTRUMENTO(
 id					id				not null,
-marca				name,
-fabricante			name,
-modelo				name,
+marca				str150,
+fabricante			str150,
+modelo				str150,
 musicoCC			cc,
-famInstrumento		name,
+famInstrumento		str150,
 primary key(id),
 foreign key (musicoCC) references EM.MUSICO(numCC) on delete set null on update cascade
 )
+
+create table EM.EMPRESACATERING(
+nif					char(9)			not null			check (nif like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+nome				str150,
+email				email,			--unique?
+telefone			telefone		check (telefone like '%[^0-9]%'),
+endereço			str250,
+primary key (nif)
+)
+
+create table EM.REFEICAO(
+id					id				not null,
+nome				str150,
+id_evento			id,
+nif_empresa			char(9)			check (nif_empresa like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]') default '000000000',
+prato				str250,
+sobremesa			str250,	
+bebida				str250,
+primary key (id),
+foreign key (id_evento) references EM.EVENTO(id) on delete set null on update cascade,
+foreign key (nif_empresa) references EM.EMPRESACATERING(nif) on delete set default on update cascade
+);
+
 
 
 
