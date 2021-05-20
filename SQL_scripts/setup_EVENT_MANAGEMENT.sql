@@ -52,7 +52,7 @@ create table EM.PROMOTOR(
 numCC				cc				not null,
 nome				str150,
 email				email,			--unique?
-telefone			telefone		check (telefone like '%[^0-9]%')
+telefone			telefone,
 primary key (numCC)
 )
 
@@ -61,7 +61,7 @@ create table EM.STAGEMANAGER(
 numCC				cc				not null,
 nome				str150,
 email				email,			--unique?
-telefone			telefone		check (telefone like '%[^0-9]%'),
+telefone			telefone,
 primary key(numCC)
 )
 
