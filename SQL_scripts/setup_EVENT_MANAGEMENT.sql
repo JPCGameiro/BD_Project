@@ -117,7 +117,7 @@ foreign key(id_soundcheck) references EM.SOUNDCHECK(id) on delete set null on up
 create table EM.COMITIVA(
 id					id				not null,
 email				email,
-telefone			telefone		check (telefone like '%[^0-9]%'),
+telefone			telefone,
 id_banda			id,
 primary key(id),
 foreign key(id_banda) references EM.BANDA(id) on delete set null on update cascade

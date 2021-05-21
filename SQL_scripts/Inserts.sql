@@ -277,6 +277,78 @@ VALUES('toy', 'Toy',  351933133224, 'toy@gmail.com', 1, 'Pimba');
 
 SELECT * FROM EM.BANDA;
 
+/*  BANDAS  */
+INSERT INTO EM.COMITIVA
+VALUES('Comitivaff', 'ffcomitive@hotmail.com', 142522301102, 'ff');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivanm', 'mouracm@hotmail.com', 351921101182, 'anm');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivacc', 'comitiveconnors@hotmail.com', 142188081102, 'cc');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivacdb', 'comitivecdb@hotmail.com', 142132281302, 'cdb');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivacpt', 'carminho.comitiva@gmail.com', 351927783302, 'cpt');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivacr', 'comitiva.restusa@gmail.com', 351937181111, 'cr');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivadb', 'combo.comitiva@gmail.com', 351927182121, 'db');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivaes', 'comitive.sheeran@hotmail.com', 142535686662, 'es');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivagd', 'green.comitive@hotmail.com', 142525282222, 'gd');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivajp', 'palma.comitive@hotmail.com', 351925112302, 'jp');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivajw', 'cm.white@hotmail.com', 351933087302, 'jw');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivama', 'araujo.comitive@hotmail.com', 351921012300, 'ma');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivammj', 'jacket.comitive@hotmail.com', 351935332102, 'mmj');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivanj', 'jones.comitive@hotmail.com', 142515080266, 'nj');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivaon', 'negra.com@gmail.com', 351966316102, 'on');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivaosdc', 'chicago.comitive@gmail.com', 351911410000, 'osdc');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivaqb', 'barreiros.comitive@gmail.com', 351926417802, 'qb');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivarv', 'veloso.comitive@gmail.com', 351922010002, 'rv');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivaslr', 'slayer.comitive@gmail.com', 142527232120, 'rv');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivatba', 'angels.comitive@gmail.com', 142521212110, 'tba');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivatbk', 'comitive.keys@gmail.com', 142527838327, 'tbk');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivatk', 'comitive.kills@gmail.com', 142527131337, 'tk');
+
+INSERT INTO EM.COMITIVA
+VALUES('Comitivatoy', 'comitiva.toy@gmail.com', 351927001017, 'toy');
+
+SELECT * FROM EM.COMITIVA;
+
 
 
 
