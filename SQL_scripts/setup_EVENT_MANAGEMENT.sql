@@ -179,7 +179,6 @@ primary key (nif)
 
 create table EM.REFEICAO(
 id					id				not null,
-nome				str150,
 id_evento			id,
 nif_empresa			char(9)			check (nif_empresa like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]') default '000000000',
 prato				str250,
