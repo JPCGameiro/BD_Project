@@ -195,34 +195,34 @@ INSERT INTO EM.BANDA
 VALUES('cc', 'Calvin Connors Band', 142525304502, 'ccband@gmail.com', 4, 'Pop');
 
 INSERT INTO EM.BANDA
-VALUES('es', 'Ed Sheeran', 142500304300, 'eds@gmail.com', 4, 'Pop');
+VALUES('es', 'Ed Sheeran', 142500304300, 'eds@gmail.com', 1, 'Pop');
 
 INSERT INTO EM.BANDA
-VALUES('osdc', 'Orquestra Sinfónica de Chicago', 142511104110, 'osdc@gmail.com', 30, 'Clássico');
+VALUES('osdc', 'Orquestra Sinfónica de Chicago', 142511104110, 'osdc@gmail.com', 10, 'Clássico');
 
 INSERT INTO EM.BANDA
-VALUES('bnz', 'Benzi', 351920100010, 'benzi@gamil.com', 3, 'Rap');
+VALUES('bnz', 'Benzi', 351920100010, 'benzi@gamil.com', 1, 'Rap');
 
 INSERT INTO EM.BANDA
-VALUES('mm', 'minem', 351920100010, 'nm25@gmail.com', 2, 'Rap');
+VALUES('mm', 'Minem', 351920100010, 'nm25@gmail.com', 1, 'Rap');
 
 INSERT INTO EM.BANDA
 VALUES('tbk', 'The Black Keys', 142520100010, 'tbk@gmail.com', 2, 'Blues Rock');
 
 INSERT INTO EM.BANDA
-VALUES('xp', 'Xutos & Pontapés', 351920102310, 'xp1999@gmail.com', 6, 'Rock');
+VALUES('xp', 'Xutos & Pontapés', 351920102310, 'xp1999@gmail.com', 4, 'Rock');
 
 INSERT INTO EM.BANDA
 VALUES('on', 'Orelha Negra', 351962657150, 'on87@hotmail', 5, 'Rap');
 
 INSERT INTO EM.BANDA
-VALUES('spn', '(s)Pain', 351928865113, 'pain1000@gmail.com', 4, 'Punk');
+VALUES('spn', '(s)Pain', 351928865113, 'pain1000@gmail.com', 3, 'Punk');
 
 INSERT INTO EM.BANDA
 VALUES('gd', 'Green Day', 142525005113, 'gd1039@gmail.com', 3, 'Punk');
 
 INSERT INTO EM.BANDA
-VALUES('pbld', 'Peasent Blood', 142525505213, 'pbld@gmail.com', 5, 'Metal');
+VALUES('pbld', 'Royal Blood', 142525505213, 'pbld@gmail.com', 2, 'Metal');
 
 INSERT INTO EM.BANDA
 VALUES('lm', 'Luís Miguel', 351925055213, 'pizzimusic@hotmail.com', 1, 'Pop');
@@ -276,7 +276,7 @@ INSERT INTO EM.BANDA
 VALUES('anm', 'Ana Moura',  351923123344, 'moura@gmail.com', 1, 'Fado');
 
 INSERT INTO EM.BANDA
-VALUES('qb', 'Quim Barreiros',  351911113344, 'quim.barreiros@gmail.com', 2, 'Pimba');
+VALUES('qb', 'Quim Barreiros',  351911113344, 'quim.barreiros@gmail.com', 1, 'Pimba');
 
 INSERT INTO EM.BANDA
 VALUES('toy', 'Toy',  351933133224, 'toy@gmail.com', 1, 'Pimba');
@@ -285,7 +285,7 @@ INSERT INTO EM.BANDA
 VALUES('hz', 'Hanz Zimmer',  351922233224, 'hz@gmail.com', 1, 'Clássico');
 
 INSERT INTO EM.BANDA
-VALUES('ib', 'IssaBella',  351923430024, 'ib@gmail.com', 4, 'Jazz');
+VALUES('ib', 'IssaBella',  351923430024, 'ib@gmail.com', 3, 'Jazz');
 
 INSERT INTO EM.BANDA
 VALUES('lb', 'Luisa Sobral',  351911233224, 'sobral@gmail.com', 1, 'Jazz');
@@ -907,13 +907,351 @@ INSERT INTO EM.SOUNDCHECK VALUES(49, '00:30','2022-03-02 10:00:00');
 INSERT INTO EM.CONCERTO VALUES(49, '2022-03-02 22:00:00', '02:00', 'reo', 20, 49);
 
 
-
-
-SELECT * FROM EM.EVENTO;
-SELECT * FROM EM.BANDA;
 SELECT * FROM EM.SOUNDCHECK;
 SELECT * FROM EM.CONCERTO;
 
+/*	MUSICOS (membros de bandas não parte de comitivas)	*/
+INSERT INTO EM.PESSOA VALUES(00222432, NULL, 'Ana Moura Peireira', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(00222432, 'Ana Moura', 'anm');
+
+INSERT INTO EM.PESSOA VALUES(11120032, NULL, 'Rafael Benzinho', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11120032, 'Benzi', 'bnz');
+
+
+INSERT INTO EM.PESSOA VALUES(22020032, 'csc@gmail.com', 'Calvin Stuart Connors', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(22020032, 'Calvin Connors', 'cc');
+
+INSERT INTO EM.PESSOA VALUES(22121566, 'mconnors@gmail.com', 'Mary Connors', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(22121566, 'Mary Connors', 'cc');
+
+INSERT INTO EM.PESSOA VALUES(12144566, 'gstuart@gmail.com', 'Gary Stuart', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(12144566, 'Mary Connors', 'cc');
+
+INSERT INTO EM.PESSOA VALUES(12133566, 'paul.davis@gmail.com', 'Paul Davis', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(12133566, 'Paul Davis', 'cc');
+
+
+INSERT INTO EM.PESSOA VALUES(2003766, 'clive.davis@gmail.com', 'Clive Davis', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(2003766, 'Clive Davis', 'cdb');
+
+INSERT INTO EM.PESSOA VALUES(1023766, 't.stone@gmail.com', 'Tony Stone', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(1023766, 'T-Stone', 'cdb');
+
+INSERT INTO EM.PESSOA VALUES(1223465, 'mls@gmail.com', 'Mary Lewis Stone', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(1223465, 'ML-Stone', 'cdb');
+
+INSERT INTO EM.PESSOA VALUES(1621166, 'm.rupert@gmail.com', 'Mark Rupert', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(1621166, 'Mark Rupert', 'cdb');
+
+INSERT INTO EM.PESSOA VALUES(12234566, 't.lewis@hotmail.com', 'Tommy Lewis', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(12234566, 'T-Tommy', 'cdb');
+
+
+INSERT INTO EM.PESSOA VALUES(12122032, 'gosmo@gmail.com', 'Manuel Tomás', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(12122032, 'Gosmo', 'cr');
+
+INSERT INTO EM.PESSOA VALUES(12722737, 'tortulho@gmail.com', 'João Carlos', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(12722737, 'Jonh Tortulho', 'cr');
+
+INSERT INTO EM.PESSOA VALUES(32322332, 'galhao@gmail.com', 'Artur Fonseca', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(32322332, 'Dr Fonseca Galhao', 'cr');
+
+INSERT INTO EM.PESSOA VALUES(77772732, 'las@gmail.com', 'Luís Andrade Fonseca', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(77772732, 'Homem Sugo', 'cr');
+
+INSERT INTO EM.PESSOA VALUES(66166032, 'mfonseca@gmail.com', 'Marco Fonseca', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(66166032, 'Maxado El Rosa', 'cr');
+
+
+INSERT INTO EM.PESSOA VALUES(06146042, 'pgc@gmail.com', 'Pedro Gonçalves', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(06146042, 'Pedro Gonçalves', 'db');
+
+INSERT INTO EM.PESSOA VALUES(86148048, 'totrips@gmail.com', 'Marco Artur Gonçalves', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(86148048, 'Tó Trips', 'db');
+
+
+INSERT INTO EM.PESSOA VALUES(22146042, 'ml@gmail.com', 'Miguel Luz', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(22146042, 'Mike El Night', 'db&men');
+
+INSERT INTO EM.PESSOA VALUES(36156542, 'bruno.david@gmail.com', 'David Bruno', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(36156542, 'David Bruno', 'db&men');
+
+
+INSERT INTO EM.PESSOA VALUES(16149942, NULL, 'Edward Sheeran', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(16149942, 'Ed Sheeran', 'es');
+
+
+INSERT INTO EM.PESSOA VALUES(11141142, 'davegrohl@gmail.com', 'Dave Grohl', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11141142, 'Dave Grohl', 'ff');
+
+INSERT INTO EM.PESSOA VALUES(33143142, 'hawk@gmail.com', 'Taylor Hawkins', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(33143142, 'Taylor Hawkins', 'ff');
+
+INSERT INTO EM.PESSOA VALUES(55141142, 'natemendel@gmail.com', 'Nate Mendel', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(55141142, 'Nate Mendel', 'ff');
+
+INSERT INTO EM.PESSOA VALUES(17177142, 'smearpat@gmail.com', 'Pat Smear', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(17177142, 'Pat Smear', 'ff');
+
+INSERT INTO EM.PESSOA VALUES(87187142, 'jj.ff@gmail.com', 'Jami Jaffe', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(87187142, 'Pat Smear', 'ff');
+
+
+INSERT INTO EM.PESSOA VALUES(47147442, 'bja@gmail.com', 'Billie Joe Armstrong', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(47147442, 'Billie Joe Armstrong', 'gd');
+
+INSERT INTO EM.PESSOA VALUES(87177882, 'dirnt.mike@gmail.com', 'Mike Dirnt', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(87177882, 'Mike Dirnt', 'gd');
+
+INSERT INTO EM.PESSOA VALUES(13337142, 'smearpat@gmail.com', 'Frank Edwin Wright', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(13337142, 'Tre Cool', 'gd');
+
+
+INSERT INTO EM.PESSOA VALUES(18337128, 'candreu@gmail.com', 'Christian Andreu', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(18337128, 'Christian Andreu', 'gj');
+
+INSERT INTO EM.PESSOA VALUES(15535142, 'joe.dupl@gmail.com', 'Joe Duplantier', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(15535142, 'Joe Duplantier', 'gj');
+
+INSERT INTO EM.PESSOA VALUES(25535142, 'mario.dupl@gmail.com', 'Mario Duplantier', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(25535142, 'Mario Duplantier', 'gj');
+
+INSERT INTO EM.PESSOA VALUES(15665142, 'jean.michel@gmail.com', 'Jean-Michel Labadie', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(15665142, 'Jean-Michel Labadie', 'gj');
+
+INSERT INTO EM.PESSOA VALUES(15939192, 'corm@gmail.com', 'Alexandre Cormillon', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(15939192, 'Alexandre Cormillon', 'gj');
+
+
+INSERT INTO EM.PESSOA VALUES(12239292, NULL, 'Hans Florian Zimmer', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(12239292, 'Hanz Zimmer', 'hz');
+
+
+INSERT INTO EM.PESSOA VALUES(22232292, 'r.cavalheiro@hotmail.com', 'Rui Cavalheiro', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(22232292, 'Ruy Cavalheiro', 'ib');
+
+INSERT INTO EM.PESSOA VALUES(12231792, 'jl.issabella@hotmail.com', 'José Luís', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(12231792, 'Ruy Cavalheiro', 'ib');
+
+INSERT INTO EM.PESSOA VALUES(33771792, 'andre.malheiro@hotmail.com', 'André Malheiro', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(33771792, 'André Malheiro', 'ib');
+
+
+INSERT INTO EM.PESSOA VALUES(13331755, NULL,'Jorje Palma', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(13331755, 'Jorje Palma', 'jp');
+
+
+INSERT INTO EM.PESSOA VALUES(44231492, NULL, 'John Anthony White', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(44231492, 'Jack White', 'jw');
+
+
+INSERT INTO EM.PESSOA VALUES(11631462, NULL, 'Luísa Sobral', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(11631462, 'Luísa Sobral', 'lb');
+
+
+INSERT INTO EM.PESSOA VALUES(33631362, NULL, 'Luís Miguel', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(33631362, 'Luís Miguel', 'lm');
+
+
+INSERT INTO EM.PESSOA VALUES(22232462, NULL, 'Miguel Araújo', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(22232462, 'Miguel Araújo', 'ma');
+
+
+INSERT INTO EM.PESSOA VALUES(23332462, NULL, 'Marcio Tavares', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(23332462, 'Minem', 'mm');
+
+
+INSERT INTO EM.PESSOA VALUES(23332111, NULL, 'Norah Jones', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(23332111, 'Norah Jones', 'nj');
+
+
+INSERT INTO EM.PESSOA VALUES(11551162, 'ym.yames@gmail.com', 'Jim James', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11551162, 'Jim James', 'mmj');
+
+INSERT INTO EM.PESSOA VALUES(11222162, 'jones.tommy@gmail.com', 'Tommy Jones', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11222162, 'Two Tone Tommy', 'mmj');
+
+INSERT INTO EM.PESSOA VALUES(11331162, 'carl.broemel@gmail.com', 'Carl Broemel', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11331162, 'Carl Broemel', 'mmj');
+
+INSERT INTO EM.PESSOA VALUES(11331188, 'ptrk@gmail.com', 'Patrick Hallaham', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11331188, 'Patrick Hallaham', 'mmj');
+
+INSERT INTO EM.PESSOA VALUES(11373632, 'bo.koster@gmail.com', 'Robert Koster', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11373632, 'Bo Koster', 'mmj');
+
+
+INSERT INTO EM.PESSOA VALUES(15351562, 'carlos.cruz@gmail.com', 'Carlos Cruz', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(15351562, 'DJ Cruzfader', 'on');
+
+INSERT INTO EM.PESSOA VALUES(12338192, 'thekid@gmail.com', 'Samuel Antunes', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(12338192, 'Sam The Kid', 'on');
+
+INSERT INTO EM.PESSOA VALUES(71734160, 'gomes.12@gmail.com', 'João Gomes', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(71734160, 'João Gomes', 'on');
+
+INSERT INTO EM.PESSOA VALUES(78834880, 'fred12ff@gmail.com', 'Fred Ferreira', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(78834880, 'Fred Ferreira', 'on');
+
+INSERT INTO EM.PESSOA VALUES(81884160, 'f.rebelo@gmail.com', 'Francisco Rebelo', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(81884160, 'Francisco Rebelo', 'on');
+
+
+INSERT INTO EM.PESSOA VALUES(61736880, NULL, 'Quim Barreiros', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(61736880, 'Quim Barreiros', 'qb');
+
+INSERT INTO EM.PESSOA VALUES(61736550, NULL, 'Rui Veloso', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(61736550, 'Rui Veloso', 'rv');
+
+INSERT INTO EM.PESSOA VALUES(88800880, NULL, 'António Manuel Neves Ferrão', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(88800880, 'Toy', 'toy');
+
+
+INSERT INTO EM.PESSOA VALUES(84222881, 'mike.kerr@gmail.com', 'Mike Kerr', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(84222881, 'Mike Kerr', 'pbld');
+
+INSERT INTO EM.PESSOA VALUES(14212881, 'ben.tatcher@gmail.com', 'Ben Tatcher', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(14212881, 'Ben Tatcher', 'pbld');
+
+
+INSERT INTO EM.PESSOA VALUES(13212331, 'dan.auerbach@gmail.com', 'Dan Auerbach', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(13212331, 'Dan Auerbach', 'tbk');
+
+INSERT INTO EM.PESSOA VALUES(10210301, 'pat.carney@gmail.com', 'Patrick Carney', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(10210301, 'Patick Carney', 'tbk');
+
+
+INSERT INTO EM.PESSOA VALUES(16205301, 'all.kills@gmail.com', 'Allison Mosshart', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(16205301, 'Allison Mosshart', 'tk');
+
+INSERT INTO EM.PESSOA VALUES(88205301, 'all.kills@gmail.com', 'Jamie Hince', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(88205301, 'Allison Mosshart', 'tk');
+
+
+INSERT INTO EM.PESSOA VALUES(30321303, 'jpcg@gmail.com', 'João Gameiro', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(30321303, 'João Gameiro', 'subs');
+
+INSERT INTO EM.PESSOA VALUES(35321223, 'job@gmail.com', 'João Job', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(35321223, 'João Job', 'subs');
+
+INSERT INTO EM.PESSOA VALUES(30551353, 'adielma@gmail.com', 'Diogo Almeida', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(30551353, 'Diogo Almeida', 'subs');
+
+
+INSERT INTO EM.PESSOA VALUES(30558859, 'neal@gmail.com', 'Neal Doughty', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(30558859, 'Neal Douthy', 'reo');
+
+INSERT INTO EM.PESSOA VALUES(07550359, 'grich@gmail.com', 'Gary Richrath', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(07550359, 'Gary RichRath', 'reo');
+
+INSERT INTO EM.PESSOA VALUES(48658353, 'gregg@gmail.com', 'Gregg Phillbin', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(48658353, 'Gregg Phillbin', 'reo');
+
+INSERT INTO EM.PESSOA VALUES(37757373, 'tl2500@gmail.com', 'Terry Lutrel', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(37757373, 'Terry Lutrel', 'reo');
+
+INSERT INTO EM.PESSOA VALUES(37758390, 'kcr@gmail.com', 'Kevin Cronin', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(37758390, 'Kevin Cronin', 'reo');
+
+
+INSERT INTO EM.PESSOA VALUES(33058090, 'kking@gmail.com', 'Kerry King', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(33058090, 'Kevin Cronin', 'slr');
+
+INSERT INTO EM.PESSOA VALUES(00656390, 'ayara@gmail.com', 'Tom Araya', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(00656390, 'Tom Araya', 'slr');
+
+INSERT INTO EM.PESSOA VALUES(11456390, 'hot.gary@gmail.com', 'Gary Holt', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11456390, 'Gary Holt', 'slr');
+
+INSERT INTO EM.PESSOA VALUES(00657790, 'davelombardo@gmail.com', 'Dave Lombardo', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(00657790, 'Dave Lombardo', 'slr');
+
+INSERT INTO EM.PESSOA VALUES(02656391, 'dette@gmail.com', 'Jon Dette', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(02656391, 'Jon Dette', 'slr'); 
+
+
+INSERT INTO EM.PESSOA VALUES(02336391, 'kingharry@gmail.com', 'Harry Stuart Lewis', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(02336391, 'KingHarry', 'spn'); 
+
+INSERT INTO EM.PESSOA VALUES(02436581, 'swango.nikki@gmail.com', 'Mary Elizabeth Winstead', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(02436581, 'Nikki Swango', 'spn'); 
+
+INSERT INTO EM.PESSOA VALUES(02446398, 'marc.foster@gmail.com', 'Marc Foster', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(02446398, 'Marc Foster', 'spn'); 
+
+
+INSERT INTO EM.PESSOA VALUES(01306491, 'ryan.nate@gmail.com', 'Nate Ryan', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(01306491, 'Nate Ryan', 'tba');
+
+INSERT INTO EM.PESSOA VALUES(12307391, 'steph@gmail.com', 'Stephanie Bailey', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(12307391, 'Stephanie Bailey', 'tba');
+
+INSERT INTO EM.PESSOA VALUES(33333391, 'hunt.kyle@gmail.com', 'Kyle Hunt', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(33333391, 'Kyle Hunt', 'tba'); 
+
+INSERT INTO EM.PESSOA VALUES(33134391, 'alx.maas@gmail.com', 'Alex Maas', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(33134391, 'Alex Maas', 'tba'); 
+
+INSERT INTO EM.PESSOA VALUES(34435391, 'bland@gmail.com', 'Christian Bland', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(34435391, 'Christian Bland', 'tba'); 
+
+
+INSERT INTO EM.PESSOA VALUES(14131851, 'd.antunes@gmail.com', 'Diogo Antunes', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(14131851, 'Diogo Antunes', 'tht'); 
+
+INSERT INTO EM.PESSOA VALUES(32235391, 'mauro.pereira@gmail.com', 'Mauro Pereira', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(32235391, 'Mauro Pereira', 'tht'); 
+
+INSERT INTO EM.PESSOA VALUES(38835881, 'vitor.pereira@gmail.com', 'Vitor Pereira', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(38835881, 'Vitor Pereira', 'tht'); 
+
+
+INSERT INTO EM.PESSOA VALUES(11215391, 'tim@gmail.com', 'António Manuel', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11215391, 'Tim', 'xp'); 
+
+INSERT INTO EM.PESSOA VALUES(18218398, 'cabeleira@gmail.com', 'João Cabeleira', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(18218398, 'João Cabeleira', 'xp'); 
+
+INSERT INTO EM.PESSOA VALUES(86615391, 'kalu@gmail.com', 'Carlos Eduardo ', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(86615391, 'Kalu', 'xp'); 
+
+INSERT INTO EM.PESSOA VALUES(86688398, 'gui@gmail.com', 'Guilherme Cabral ', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(86688398, 'Gui', 'xp'); 
+
+
+INSERT INTO EM.PESSOA VALUES(81645391, 'mc.osdc@gmail.com', 'Mary Carlson', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(81645391, 'Mary Carlson', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(16615191, NULL, 'Peter Edwards ', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(16615191, 'Peter Edwards', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(18185391, NULL, 'Candy Start ', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(18185391, 'Candy Start', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(98900301, NULL, 'Marianne Lewis ', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(98900301, 'Marianne Lewis', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(18445491, NULL, 'Anthony Alexander', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(18445491, 'Alexander', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(11645391, 'banks.osdc@gmail.com', 'Cody Banks', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(11645391, 'Cody Banks', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(88675891, 'arielwinter@gmail.com', 'Ariel Winter', 'f', NULL);
+INSERT INTO EM.MUSICO VALUES(88675891, 'Ariel WInter', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(48145391, 'nola.gould@gmail.com', 'Nolan Gould ', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(48145391, 'Nolan Gould', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(98910201, NULL, 'Patrick Dempsey', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(98910201, 'Patrick Dempsey', 'osdc'); 
+
+INSERT INTO EM.PESSOA VALUES(18666491, NULL, 'Arthur Hobbs', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(18666491, 'Arthur Hobbs', 'osdc'); 
+
+
+SELECT * FROM EM.BANDA; 
+SELECT * FROM EM.MUSICO;
 
 
 
