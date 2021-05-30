@@ -189,8 +189,3 @@ primary key (id),
 foreign key (id_evento) references EM.EVENTO(id) on delete set null on update cascade,
 foreign key (nif_empresa) references EM.EMPRESACATERING(nif) on delete set default on update cascade
 );
-
-
-
-
-
