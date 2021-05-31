@@ -80,14 +80,14 @@ primary key (id),
 foreign key (cc_promotor) references EM.PROMOTOR(numCC) on delete set null on update cascade,
 foreign key (cc_stageManager) references EM.STAGEMANAGER(numCC) on delete set null on update cascade,
 check (dataproposta < dataini), -- se ao introduzir uma destas for null, a check rebenta?
-check (dataini < datafim)
+check (dataini <= datafim)
 )
 
 
 create table EM.BANDA(
 id					id				not null,
 nome				str150			not null,
-telefone			telefone		check (telefone like '%[^0-9]%'),
+telefone			telefone,
 email				email,
 numElem				int,
 genero				varchar(200)
@@ -117,7 +117,7 @@ foreign key(id_soundcheck) references EM.SOUNDCHECK(id) on delete set null on up
 create table EM.COMITIVA(
 id					id				not null,
 email				email,
-telefone			telefone		check (telefone like '%[^0-9]%'),
+telefone			telefone,
 id_banda			id,
 primary key(id),
 foreign key(id_banda) references EM.BANDA(id) on delete set null on update cascade
@@ -172,14 +172,13 @@ create table EM.EMPRESACATERING(
 nif					char(9)			not null			check (nif like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
 nome				str150,
 email				email,			--unique?
-telefone			telefone		check (telefone like '%[^0-9]%'),
+telefone			telefone,
 endereço			str250,
 primary key (nif)
 )
 
 create table EM.REFEICAO(
 id					id				not null,
-nome				str150,
 id_evento			id,
 nif_empresa			char(9)			check (nif_empresa like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]') default '000000000',
 prato				str250,
