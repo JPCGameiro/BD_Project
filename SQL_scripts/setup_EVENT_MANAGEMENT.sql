@@ -160,7 +160,6 @@ foreign key(numCC) references EM.PESSOA(numCC) on delete cascade on update casca
 create table EM.INSTRUMENTO(
 id					id				not null,
 marca				str150,
-fabricante			str150,
 modelo				str150,
 musicoCC			cc,
 famInstrumento		str150,
@@ -188,3 +187,8 @@ primary key (id),
 foreign key (id_evento) references EM.EVENTO(id) on delete set null on update cascade,
 foreign key (nif_empresa) references EM.EMPRESACATERING(nif) on delete set default on update cascade
 );
+
+
+
+
+
