@@ -425,13 +425,16 @@ INSERT INTO EM.PESSOA VALUES(52524134, 'kind@gmail.com', 'Richard Kind', 'm', 'C
 							(52524111, 'mcarney@gmail.com', 'Michael Carney', 'm', 'Comitivatbk'),
 							(62524134, 'at2020@gmail.com', 'Antony Theron', 'm', 'Comitivatbk'),
 							(72524134, 'lt2020@gmail.com', 'Louise Theron', 'm', 'Comitivatbk'),
-							(78884134, 'am@gmail.com', 'Arma Louis', 'f', 'Comitivatbk');
+							(78884134, 'am@gmail.com', 'Arma Louis', 'f', 'Comitivatbk'),
+							(92220011, 'switft@gmail.com', 'Richard Switf', 'm', 'Comitivatbk'),
+							(92220033, 'tompson@gmail.com', 'Paul Tompson', 'm', 'Comitivatbk');
 INSERT INTO EM.ACOMPANHANTE VALUES(52524134, 'Amigo'),
 								  (52524111, 'Familiar');
 INSERT INTO EM.TECNICO VALUES(62524134, 'Técnico de Som'),
 							 (72524134, 'Técnico de Guitarras'),
 							 (78884134, 'Técnico de Guitarras');
-
+INSERT INTO EM.MUSICO VALUES(92220011, 'Richard Switf', 'tbk'),
+							(92220033, 'Paul Tompson', 'tbk');
 
 
 INSERT INTO EM.PESSOA VALUES(33534134, 'cc2020@gmail.com', 'Carla Costa', 'f', 'Comitivatba'),
@@ -505,12 +508,14 @@ INSERT INTO EM.PESSOA VALUES(12622032, 'benneth45@gmail.com', 'Jonh Benneth', 'm
 							(92708291, 'ratherdonny@gmail.com', 'Donny Rahter', 'm', 'Comitivanj'),
 							(10332260, 'murphy@gmail.com', 'Anne Murphy', 'f', 'Comitivanj'),
 							(16642003, 'rose.jonnhy@gmail.com', 'Jonnhy Rose', 'm', 'Comitivanj'),
-							(32300003, 'milakunis@gmail.com', 'Mila Kunis', 'f', 'Comitivanj');
+							(32300003, 'milakunis@gmail.com', 'Mila Kunis', 'f', 'Comitivanj'),
+							(12301103, 'mhj@gmail.com', 'Mark Hensen Jones', 'm', 'Comitivanj');
 INSERT INTO EM.TECNICO VALUES(12622032, 'Técnico de Som'),
 							 (10332260, 'Técnico de Luz'),
 							 (92708291, 'Técnico de Som');
 INSERT INTO EM.ACOMPANHANTE VALUES(16642003, 'Amigo'),
 								  (32300003, 'Amigo');
+INSERT INTO EM.MUSICO VALUES(12301103, 'Mark Jones', 'nj');
 
 
 
@@ -569,14 +574,15 @@ INSERT INTO EM.PESSOA VALUES(70608436, 'cavallo456@gmail.com', 'Rob Cavallo', 'm
 							(28220000, 'tim.armstrong@gmail.com', 'Tim Armstrong', 'm', 'Comitivagd'),
 							(26620431, 'dirnt.isabel@gmail.com', 'Isabel Dirnt', 'f', 'Comitivagd'),
 							(20700771, 'lewis.2050@gmail.com', 'Mike Lewis', 'm', 'Comitivagd'),
-							(90220431, 'cohen.4789@gmail.com', 'Rob Cohen', 'm', 'Comitivagd');
+							(90220431, 'cohen.4789@gmail.com', 'Rob Cohen', 'm', 'Comitivagd'),
+							(80807712, 'freeze.jason@gmail.com', 'Jason Freeze', 'm', 'Comitivagd');
 INSERT INTO EM.ACOMPANHANTE VALUES(80527506, 'Familiar'),
 								  (28220000, 'Familiar'),
 								  (26620431, 'Familiar');
 INSERT INTO EM.TECNICO VALUES(70608436, 'Técnico de Som'),
 							 (20700771, 'Técnico de Luz'),
 							 (90220431, 'Técnico de Guitarras');
-
+INSERT INTO EM.MUSICO VALUES(80807712, 'Jason Freeze', 'gd');
 
 
 INSERT INTO EM.PESSOA VALUES(10648434, 'ellie.789@gmail.com', 'Ellie Sheeran', 'f', 'Comitivaes'),
@@ -668,11 +674,12 @@ INSERT INTO EM.ACOMPANHANTE VALUES(02167313, 'Familiar'),
 
 INSERT INTO EM.PESSOA VALUES (07122733, 'sobral.salvador@gmail.com', 'Salvador Sobral', 'm', 'Comitivalb'),
 							 (20123334, 'andrade.artur@gmail.com', 'Artur Andrade', 'm', 'Comitivalb'),
-							 (50556732, 'm.matias@gmail.com', 'Mariana Matias', 'f', 'Comitivalb');
+							 (50556732, 'm.matias@gmail.com', 'Mariana Matias', 'f', 'Comitivalb'),
+							 (10111732, 'reamos@gmail.com', 'Sara Ramos', 'f', 'Comitivalb');
 INSERT INTO EM.TECNICO VALUES(20123334, 'Técnico de Som'),
 							 (50556732, 'Técnico de Luz');
 INSERT INTO EM.ACOMPANHANTE VALUES(07122733, 'Familiar');
-
+INSERT INTO EM.MUSICO VALUES(10111732, 'Sara Ramos', 'lb');
 
 
 INSERT INTO EM.PESSOA VALUES (00166733, 'matthew.lewis@gmail.com', 'Matthew Lewis', 'm', 'Comitivagj'),
@@ -925,7 +932,7 @@ INSERT INTO EM.PESSOA VALUES(22121566, 'mconnors@gmail.com', 'Mary Connors', 'f'
 INSERT INTO EM.MUSICO VALUES(22121566, 'Mary Connors', 'cc');
 
 INSERT INTO EM.PESSOA VALUES(12144566, 'gstuart@gmail.com', 'Gary Stuart', 'm', NULL);
-INSERT INTO EM.MUSICO VALUES(12144566, 'Mary Connors', 'cc');
+INSERT INTO EM.MUSICO VALUES(12144566, 'Gary Stuart', 'cc');
 
 INSERT INTO EM.PESSOA VALUES(12133566, 'paul.davis@gmail.com', 'Paul Davis', 'm', NULL);
 INSERT INTO EM.MUSICO VALUES(12133566, 'Paul Davis', 'cc');
@@ -994,7 +1001,7 @@ INSERT INTO EM.PESSOA VALUES(17177142, 'smearpat@gmail.com', 'Pat Smear', 'm', N
 INSERT INTO EM.MUSICO VALUES(17177142, 'Pat Smear', 'ff');
 
 INSERT INTO EM.PESSOA VALUES(87187142, 'jj.ff@gmail.com', 'Jami Jaffe', 'm', NULL);
-INSERT INTO EM.MUSICO VALUES(87187142, 'Pat Smear', 'ff');
+INSERT INTO EM.MUSICO VALUES(87187142, 'Jami Jaffe', 'ff');
 
 
 INSERT INTO EM.PESSOA VALUES(47147442, 'bja@gmail.com', 'Billie Joe Armstrong', 'm', NULL);
@@ -1031,7 +1038,7 @@ INSERT INTO EM.PESSOA VALUES(22232292, 'r.cavalheiro@hotmail.com', 'Rui Cavalhei
 INSERT INTO EM.MUSICO VALUES(22232292, 'Ruy Cavalheiro', 'ib');
 
 INSERT INTO EM.PESSOA VALUES(12231792, 'jl.issabella@hotmail.com', 'José Luís', 'm', NULL);
-INSERT INTO EM.MUSICO VALUES(12231792, 'Ruy Cavalheiro', 'ib');
+INSERT INTO EM.MUSICO VALUES(12231792, 'José Luís', 'ib');
 
 INSERT INTO EM.PESSOA VALUES(33771792, 'andre.malheiro@hotmail.com', 'André Malheiro', 'm', NULL);
 INSERT INTO EM.MUSICO VALUES(33771792, 'André Malheiro', 'ib');
@@ -1124,8 +1131,8 @@ INSERT INTO EM.MUSICO VALUES(10210301, 'Patick Carney', 'tbk');
 INSERT INTO EM.PESSOA VALUES(16205301, 'all.kills@gmail.com', 'Allison Mosshart', 'f', NULL);
 INSERT INTO EM.MUSICO VALUES(16205301, 'Allison Mosshart', 'tk');
 
-INSERT INTO EM.PESSOA VALUES(88205301, 'all.kills@gmail.com', 'Jamie Hince', 'm', NULL);
-INSERT INTO EM.MUSICO VALUES(88205301, 'Allison Mosshart', 'tk');
+INSERT INTO EM.PESSOA VALUES(88205301, 'jamie.kills@gmail.com', 'Jamie Hince', 'm', NULL);
+INSERT INTO EM.MUSICO VALUES(88205301, 'Jamie Hince', 'tk');
 
 
 INSERT INTO EM.PESSOA VALUES(30321303, 'jpcg@gmail.com', 'João Gameiro', 'm', NULL);
@@ -1155,7 +1162,7 @@ INSERT INTO EM.MUSICO VALUES(37758390, 'Kevin Cronin', 'reo');
 
 
 INSERT INTO EM.PESSOA VALUES(33058090, 'kking@gmail.com', 'Kerry King', 'm', NULL);
-INSERT INTO EM.MUSICO VALUES(33058090, 'Kevin Cronin', 'slr');
+INSERT INTO EM.MUSICO VALUES(33058090, 'Kerry King', 'slr');
 
 INSERT INTO EM.PESSOA VALUES(00656390, 'ayara@gmail.com', 'Tom Araya', 'm', NULL);
 INSERT INTO EM.MUSICO VALUES(00656390, 'Tom Araya', 'slr');
@@ -1254,7 +1261,106 @@ SELECT * FROM EM.BANDA;
 SELECT * FROM EM.MUSICO;
 
 
+/*	INSTRUMENTOS	*/
+INSERT INTO EM.INSTRUMENTO VALUES(1, 'Fender',	'Stratocaster-369', 10111732, 'Cordas'),
+								 (2, 'Ludwig', 'Ludwig Drumset-456', 10210301, 'Percussão'),
+								 (3, 'Fender', 'Precision Bass-456', 1023766, 'Cordas'),
+								 (4, 'Gibson', 'Trini Lopez Standard ES-335', 11141142, 'Cordas'),
+								 (5, 'Gibson', 'Trini Lopez Standard ES-335', 11141142, 'Cordas'),
+								 (6, 'Fender', 'Precision Bass-456', 11215391, 'Cordas'),
+								 (7, 'Gretsch', 'Bass Series 789', 11222162, 'Cordas'),
+								 (8, 'Gibson', 'Les Paul Series 700', 11331162, 'Cordas'),
+								 (9, 'Gibson', 'Hollowbody ES-365', 11331162, 'Cordas'),
+								 (10, 'Tama', 'Tama Drums 750', 11331188, 'Percussão'),
+								 (11, 'Yamaha', '1975 Sound Keyboard', 11331188, 'Teclas'),
+								 (12, 'Gibson', 'Flying V', 11456390, 'Cordas'),
+								 (13, 'Gibson', 'Flying V', 11551162, 'Cordas'),
+								 (14, 'Gibson', 'Hollowbody ES-365', 11331162, 'Cordas'),
+								 (15, 'Taylor', 'Acoustic v789', 11631462, 'Cordas'),
+								 (16, 'Cecilio', 'CCO-100', 11645391, 'Cordas'),
+								 (17, 'Guild', 'F-20 ', 12122032, 'Cordas'),
+								 (18, 'Yahamaha', 'Keyboard 456 ', 12133566, 'Teclas'),
+								 (19, 'Yahamaha', 'Acoustic Serie 6 ', 12144566, 'Cordas'),
+								 (20, 'Fender', 'Stratocaster White Model ', 12231792, 'Cordas'),
+								 (21, 'Getzen', 'Trumpet 590S-S',12234566, 'Sopro'),
+								 (22, 'Ibanez', 'SR375EF-BBT 5string freteless bass',1223465, 'Cordas'),
+								 (23, 'Tama', 'Tama Drums 750', 12301103, 'Percussão'),
+								 (24, 'Yamaha', '187 Drums', 12307391, 'Percussão'),
+								 (25, 'Ibanez', 'ADSA bass', 12722737, 'Cordas'),
+								 (26, 'Gibson', 'L-5 CES', 1306491, 'Cordas'),
+								 (27, 'Guild', 'S-200 Thunderbird Electric Guitar',13212331, 'Cordas'),
+								 (28, 'Harmony', 'H78 Electric Guitar', 13212331, 'Cordas'), 
+								 (29, 'Yamaha', 'Electric-Acoustic 458-ESC Guitar', 13331755, 'Cordas'),
+								 (30, 'SJC', 'Custom 78 drumset', 13337142, 'Percussão'),
+								 (31, 'Gibson', 'White Line Les Paul', 14131851, 'Cordas'),
+								 (32, 'Gretsch', 'Renown Maple Drumset', 14212881, 'Percussão'),
+								 (33, 'Pioneer', 'DJ DJ-400', 15351562, 'Teclas'),
+								 (34, 'San Dimas', 'SIGNATURE PRO-MOD', 15535142, 'Cordas'),
+								 (35, 'Fender', 'Precision Bass-456', 15665142, 'Cordas'),
+								 (36, 'Fender', 'Precision Bass-456', 15939192, 'Cordas'),
+								 (37, 'Martin', 'LX', 16149942, 'Cordas'),
+								 (38, 'Ibanez', 'AS200', 1621166, 'Cordas'),
+								 (39, 'Miraphone', 'ER564 Tuba', 16615191, 'Sopro'),
+								 (40, 'Hagström', 'ES365', 17177142, 'Cordas'),
+								 (41, 'Yamaha', 'YFL 372 B-Stock Flaut', 18185391, 'Sopro'),
+								 (42, 'Washburn', 'EC-29 Spitfire', 18218398, 'Cordas'),
+								 (43, 'Gibson', 'Flying V Spitfire', 18337128, 'Cordas'),
+								 (44, 'Fender', 'Precision Bass-456', 18445491, 'Cordas'),
+								 (45, 'Bösendorfer', '45678ES-Piano', 18666491, 'Teclas'),
+								 (46, 'Pearl', '8ES-DrumSet', 22121566, 'Percussão'),
+								 (47, 'Fender', 'EESS-Bass', 22232292, 'Cordas'),
+								 (48, 'AS', 'AS-Cavaquinho', 22232462, 'Cordas'),
+								 (49, 'Fender', 'Statocaster Classic', 22232462, 'Cordas'),
+								 (50, 'Fender', 'Mustang Electric', 23332111, 'Cordas'),
+								 (51, 'Fender', 'Mustang Electric', 2336391, 'Cordas'),
+								 (52, 'Fender', 'Precision Bass-456', 2436581, 'Cordas'),
+								 (53, 'Ludwig', 'FTT-789', 2446398, 'Percussão'),
+								 (54, 'Tama', 'Tama Drums 750', 25535142, 'Percussão'),
+								 (55, 'Tama', 'Tama Drums 750', 2656391, 'Percussão'),
+								 (56, 'Pearl', 'ERT-Drums 4645', 30321303, 'Percussão'),
+								 (57, 'Epiphone', 'Les-paul Special ii', 30551353, 'Cordas'),
+								 (58, 'Yamaha', 'EWS-keyboard ii', 30558859, 'Teclas'),
+								 (59, 'Pearl', 'ERT-Drums 4645', 32235391, 'Percussão'),
+								 (60, 'Ibanez', 'AS200', 33058090, 'Cordas'),
+								 (61, 'Gretsch', 'THL-789 Drums', 33143142, 'Percussão'),
+								 (62, 'Fender', 'Jaguar-7894', 33333391, 'Cordas'),
+								 (63, 'Yamaha', 'ASD Dum set', 33771792, 'Percussão'),
+								 (64, 'Fender', 'Jaguar-7894', 34435391, 'Cordas'),
+								 (65, 'Fender', 'Precision Bass-456', 35321223, 'Cordas'),
+								 (66, 'Yamaha', 'EWS-keyboard ii', 37758390, 'Cordas'),
+								 (67, 'Gretsch', 'Series ii basses', 38835881, 'Cordas'),
+								 (68, 'Valco', '1964 Montgomery Ward JB Hutto Airline', 44231492, 'Cordas'),
+								 (69, 'Fender', 'Statocaster', 47147442, 'Cordas'),
+								 (70, 'Tama', 'SAAA drumset', 48658353, 'Percussão'),
+								 (71, 'Fender', 'Precision Bass-456', 55141142, 'Cordas'),
+								 (72, 'Cecilio', 'CDB-W', 6146042, 'Cordas'),
+								 (73, 'Gretsch', 'G2622-P90', 61736550, 'Cordas'),
+								 (74, 'Hohner', 'Compadre GCF black', 61736880, 'Teclas'),
+								 (75, 'Ibanez', 'SR305E', 656390, 'Cordas'),
+								 (76, 'Tama', 'Double kick, 324stf', 657790, 'Percussão'),
+								 (77, 'Fender', 'Statocaster', 66166032, 'Cordas'),
+								 (78, 'Pioneer', 'DJ DJ-400', 71734160, 'Teclas'),
+								 (79, 'Gibson', 'Les Paul Classic', 7550359, 'Cordas'),
+								 (80, 'Tama', 'SAAA drumset', 78834880, 'Percussão'),
+								 (81, 'Yamaha', 'YAS-280', 80807712, 'Sopro'),
+								 (82, 'Yamaha', 'YAS-280', 81645391, 'Sopro'),
+								 (83, 'Fender','Supersonic 60', 84222881, 'Cordas'),
+								 (84, 'Epiphone','ESS 2360', 86148048, 'Cordas'),
+								 (85, 'Pearl','RoadShow Studio', 86615391, 'Percussão'),
+								 (86, 'Yamaha', 'YAS-280', 86688398, 'Sopro'),
+								 (87, 'Fender', 'Squier Paranormal Bass', 87177882, 'Cordas'),
+								 (88, 'Moog Grandmother', '32-Key Semi-Modular', 87187142, 'Teclas'),
+								 (89, 'Höfner', '176 Galaxie Sunburstr', 88205301, 'Cordas'),
+								 (90, 'Yamaha', 'Electric-Acoustic 458-ESC Guitar', 88800880, 'Cordas'),
+								 (91, 'Fender', 'Telecaster', 92220011, 'Cordas'),
+								 (92, 'Fender', 'Squier Paranormal Bass', 92220033, 'Cordas'),
+								 (93, 'Pearl','RoadShow Studio', 92922911, 'Percussão'),
+								 (94, 'Ibanez','456 EST Bass', 92922933, 'Cordas'),
+								 (95, 'Cecilio', 'CDB-W ', 98900301, 'Cordas'),
+								 (96, 'GRACE', 'Student Natural Upright Double Bass ', 98910201, 'Cordas');
 
+SELECT * FROM EM.MUSICO;
+SELECT * FROM EM.INSTRUMENTO;
 
 
 
