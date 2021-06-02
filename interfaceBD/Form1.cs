@@ -55,6 +55,8 @@ namespace interfaceBD
             SqlDataReader reader = cmd.ExecuteReader();
             adicionar.Visible = true;
             adicionarEvento.Visible = false;
+            deleteEvento.Visible = false;
+            EditEvent.Visible = false;
             ClearFields();
             if (reader.Read()) {
                 idEvento.Text = ((int)(reader["entry"]) + 1).ToString();
@@ -83,6 +85,7 @@ namespace interfaceBD
             SqlCommand cmd = new SqlCommand("SELECT * FROM EM.EVENTO ORDER BY id", cn);
             SqlDataReader reader = cmd.ExecuteReader();
             listBox1.Items.Clear();
+            listBox1.Items.Add(Evento.Fline());
             while (reader.Read())
             {
                 Evento E = new Evento();
@@ -91,9 +94,9 @@ namespace interfaceBD
                 E.Numdias = reader["numdias"].ToString();
                 E.NumBilhetes = reader["numbilhetes"].ToString();
                 E.Dataini = reader["dataini"].ToString().Split(' ')[0];
-                E.Datafim = reader["datafim"].ToString();
+                E.Datafim = reader["datafim"].ToString().Split(' ')[0]; ;
                 E.Cc_promotor = reader["cc_promotor"].ToString();
-                E.DataProposta = reader["dataproposta"].ToString();
+                E.DataProposta = reader["dataproposta"].ToString().Split(' ')[0]; ;
                 E.Cc_stageManager = reader["cc_stageManager"].ToString();
                 listBox1.Items.Add(E);
             }
@@ -129,6 +132,10 @@ namespace interfaceBD
                 MessageBox.Show("Event \""+ E.Name + "\" with succsess");
                 cn.Close();
             }
+            adicionar.Visible = false;
+            adicionarEvento.Visible = true;
+            EditEvent.Visible = true;
+            deleteEvento.Visible = true;
         }
 
         public void UpdateEvent()
@@ -179,6 +186,31 @@ namespace interfaceBD
                 else
                     MessageBox.Show("Update NOT OK");
 
+                cn.Close();
+            }
+        }
+
+        public void RemoveEvent(String eventoId)
+        {
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "DELETE EM.EVENTO WHERE id=@id";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@id", eventoId);
+            cmd.Connection = cn;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to delete contact in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
                 cn.Close();
             }
         }
@@ -259,6 +291,40 @@ namespace interfaceBD
             adicionarEvento.Visible = true;
             adicionar.Visible = false;
             Update.Visible = false;
+            deleteEvento.Visible = true;
+        }
+
+        private void deleteEvento_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex > -1)
+            {
+                try
+                {
+                    RemoveEvent(((Evento)listBox1.SelectedItem).Id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                if (currentEvent == listBox1.Items.Count)
+                    currentEvent = listBox1.Items.Count - 1;
+                if (currentEvent == -1)
+                {
+                    ClearFields();
+                    MessageBox.Show("There are no more Eventos");
+                }
+                else
+                {
+                    ShowEvent();
+                }
+            }
+            EditEvent.Visible = true;
+            adicionarEvento.Visible = true;
+            adicionar.Visible = false;
+            Update.Visible = false;
+            deleteEvento.Visible = true;
         }
     }
 }

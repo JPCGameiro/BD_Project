@@ -31,7 +31,12 @@ namespace Eventos
 
         public override String ToString()
         {
-            return _id + "\t" + _name + "\t" + _numBilhetes + "\t" + _numdias + "\t" + _dataini + "\t" + _datafim + "\t" + _cc_promotor + "\t" + _dataProposta + "\t" + _cc_stageManager;
+            return String.Format("{0, -5}{1, -33}{2, -11}{3, -7}{4, -12}{5, -12}{6, -12}{7, -12}{8, -14}", this._id, this._name, this._numBilhetes, this._numdias, this._dataini, this._datafim, this._cc_promotor, this._dataProposta, this._cc_stageManager);
+        }
+
+        public static String Fline()
+        {
+            return String.Format("{0, -5}{1, -33}{2, -11}{3, -7}{4, -12}{5, -12}{6, -12}{7, -12}{8, -14}", "Id", "Name", "Bilhetes", "Dias", "Inicio", "Fim", "Promotor", "Proposta", "Stage Manager");
         }
     }
 }
