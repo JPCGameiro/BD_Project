@@ -15,6 +15,7 @@ namespace interfaceBD
     public partial class Form1 : Form
     {
         private SqlConnection cn;
+        private int currentEvent;
 
         public Form1()
         {
@@ -26,6 +27,7 @@ namespace interfaceBD
         {
             cn = getSGBDConnection();
             adicionar.Visible = false;
+            Update.Visible = false;
 
 
         }
@@ -37,7 +39,11 @@ namespace interfaceBD
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (listBox1.SelectedIndex > 0)
+            {
+                currentEvent = listBox1.SelectedIndex;
+                ShowEvent();
+            }
         }
 
         private void adicionarEvento_Click(object sender, EventArgs e)
@@ -125,7 +131,72 @@ namespace interfaceBD
             }
         }
 
+        public void UpdateEvent()
+        {
+            Evento E = new Evento();
+            try
+            {
+                E.Id = idEvento.Text;
+                E.Name = nomeEvento.Text;
+                E.NumBilhetes = numbilhetes.Text;
+                E.Numdias = numdias.Text;
+                E.Dataini = datainicio.Text;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            int rows = 0;
+
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "UPDATE EM.EVENTO " + "SET nome = @Nome, numdias = @Numdias, dataini = @Dataini, numbilhetes = @Numbilhetes WHERE id = @Id";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@Id", E.Id);
+            cmd.Parameters.AddWithValue("@Nome", E.Name);
+            cmd.Parameters.AddWithValue("@Numdias", E.Numdias);
+            cmd.Parameters.AddWithValue("@Dataini", DateTime.Parse(E.Dataini));
+            cmd.Parameters.AddWithValue("@Numbilhetes", E.NumBilhetes);
+            cmd.Connection = cn;
+
+            try
+            {
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update contact in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                if (rows == 1)
+                    MessageBox.Show("Update OK");
+                else
+                    MessageBox.Show("Update NOT OK");
+
+                cn.Close();
+            }
+        }
+
         // aux
+        public void ShowEvent()
+        {
+            if (listBox1.Items.Count == 0 | currentEvent < 0)
+                return;
+            Evento E = new Evento();
+            E = (Evento)listBox1.Items[currentEvent];
+            idEvento.Text = E.Id;
+            nomeEvento.Text = E.Name;
+            datainicio.Text = E.Dataini;
+            numdias.Text = E.Numdias;
+            numbilhetes.Text = E.NumBilhetes;
+
+        }
         public void ClearFields()
         {
             idEvento.Text = "";
@@ -154,6 +225,40 @@ namespace interfaceBD
                 cn.Open();
 
             return cn.State == ConnectionState.Open;
+        }
+
+        private void EditEvent_Click(object sender, EventArgs e)
+        {
+            currentEvent = listBox1.SelectedIndex;
+            if (currentEvent <= 0)
+            {
+                MessageBox.Show("Please select a contact to edit");
+                return;
+            }
+            else
+            {
+                ShowEvent();
+            }
+            EditEvent.Visible = false;
+            adicionarEvento.Visible = false;
+            adicionar.Visible = false;
+            Update.Visible = true;
+        }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateEvent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            EditEvent.Visible = true;
+            adicionarEvento.Visible = true;
+            adicionar.Visible = false;
+            Update.Visible = false;
         }
     }
 }
