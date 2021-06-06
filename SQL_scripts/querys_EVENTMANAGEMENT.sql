@@ -4,11 +4,6 @@
 ** Pedro Abreu & João Gameiro
  */
 
- /* Eventos de um promotor especifico */
-SELECT * 
-FROM EM.EVENTO
-WHERE cc_promotor = 22303412;
-
 /*	Promotores com mais do que um evento */
 SELECT EM.PROMOTOR.nome, numCC, email, telefone, COUNT(id) as numEventos
 FROM EM.PROMOTOR, EM.EVENTO
@@ -39,4 +34,46 @@ SELECT id, nome, numdias, numbilhetes
 FROM EM.EVENTO
 WHERE numbilhetes > ANY( SELECT AVG(numbilhetes) as media_bilhetes
 						 FROM EM.EVENTO);
+
+/* Eventos e o número de dias, concertos e de artistas nos mesmos */
+SELECT EM.EVENTO.id, EM.EVENTO.numdias, EM.EVENTO.nome, COUNT(DISTINCT EM.BANDA.nome) as num_bandas, COUNT(EM.CONCERTO.id) as num_concertos
+FROM EM.EVENTO, EM.CONCERTO, EM.BANDA
+WHERE id_evento=EM.EVENTO.id AND id_banda=EM.BANDA.id
+GROUP BY EM.EVENTO.id, EM.EVENTO.numdias, EM.EVENTO.nome;
+
+/* Número de elementos de Cada comitiva */
+SELECT id, id_banda, EM.COMITIVA.email, COUNT(*) as numElementos
+FROM EM.COMITIVA, EM.PESSOA
+WHERE id=id_comitiva
+GROUP BY id, id_banda, EM.COMITIVA.email
+ORDER BY COUNT(*);
+
+/* Número de acompanhantes de cada comitiva */
+SELECT id, id_banda, EM.COMITIVA.email, COUNT(*) as numAcompanhantes
+FROM EM.COMITIVA, EM.PESSOA, EM.ACOMPANHANTE
+WHERE id=id_comitiva AND EM.PESSOA.numCC = EM.ACOMPANHANTE.numCC
+GROUP BY id, id_banda, EM.COMITIVA.email
+ORDER BY COUNT(*);
+
+
+/* Número de Técnicos de cada comitiva */
+SELECT id, id_banda, EM.COMITIVA.email, COUNT(*) as numTecnicos
+FROM EM.COMITIVA, EM.PESSOA, EM.TECNICO
+WHERE id=id_comitiva AND EM.PESSOA.numCC = EM.TECNICO.numCC
+GROUP BY id, id_banda, EM.COMITIVA.email
+ORDER BY COUNT(*);
+
+/* Número de Musicos de apoio de cada comitiva */
+SELECT id, EM.COMITIVA.id_banda, EM.COMITIVA.email, COUNT(*) as numMusicos
+FROM EM.COMITIVA, EM.PESSOA, EM.MUSICO
+WHERE id=id_comitiva AND EM.PESSOA.numCC = EM.MUSICO.numCC
+GROUP BY id, EM.COMITIVA.id_banda, EM.COMITIVA.email
+ORDER BY COUNT(*);
+
+/* Número de Instrumentos que cada banda traz */
+SELECT EM.BANDA.id, EM.BANDA.nome, COUNT(modelo) as numInstumentos
+FROM EM.INSTRUMENTO, EM.MUSICO, EM.BANDA
+WHERE id_banda=EM.BANDA.id AND numCC = musicoCC
+GROUP BY EM.BANDA.id, EM.BANDA.nome;
+
 
