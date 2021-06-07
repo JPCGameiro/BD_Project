@@ -28,12 +28,41 @@ namespace interfaceBD
             cn = getSGBDConnection();
             adicionar.Visible = false;
             Update.Visible = false;
+            loadEventos();
 
 
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            loadEventos();
+            if (searchbar.Text != "")
+            {
+                String str = "";
+                if (idrb.Checked)
+                {
+                    str = "id LIKE '%" + searchbar.Text + "%'";
+                }
+                else if (namerb.Checked)
+                {
+                    str = "nome LIKE '%" + searchbar.Text + "%'";
+                }
+                else if (promotorrb.Checked)
+                {
+                    str = "cc_promotor LIKE '%" + searchbar.Text + "%'";
+                }
+                else if (stageManagerrb.Checked)
+                {
+                    str = "cc_stageManager LIKE '%" + searchbar.Text + "%'";
+                }
+                else
+                {
+                    MessageBox.Show("Please select a filter!");
+                }
+                loadEventos("SELECT * FROM EM.EVENTO WHERE " + str);
+            }
+            else
+            {
+                loadEventos();
+            }
         }
 
 
@@ -72,6 +101,10 @@ namespace interfaceBD
             E.NumBilhetes = numbilhetes.Text;
             E.Numdias = numdias.Text;
             E.Dataini = datainicio.Text;
+            E.Datafim = datefim.Text;
+            E.DataProposta = dataproposta.Text;
+            E.Cc_stageManager = ccstageManager.Text;
+            E.Cc_promotor = ccpromotor.Text;
             // adicionar evento à bd
             SubmitEvento(E);
         }
@@ -79,10 +112,15 @@ namespace interfaceBD
         // db interation
         private void loadEventos()
         {
+            loadEventos("SELECT * FROM EM.EVENTO ORDER BY id");
+        }
+
+        private void loadEventos(String query)
+        {
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM EM.EVENTO ORDER BY id", cn);
+            SqlCommand cmd = new SqlCommand(query, cn);
             SqlDataReader reader = cmd.ExecuteReader();
             listBox1.Items.Clear();
             listBox1.Items.Add(Evento.Fline());
@@ -110,13 +148,17 @@ namespace interfaceBD
                 return;
             SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "INSERT EM.EVENTO (id, nome, numdias, dataini, numbilhetes) VALUES (@ID, @Nome, @Numdias, @Dataini, @Numbilhetes)";
+            cmd.CommandText = "INSERT EM.EVENTO (id, nome, numdias, dataini, numbilhetes, datafim, dataproposta, cc_promotor, cc_stageManager) VALUES (@ID, @Nome, @Numdias, @Dataini, @Numbilhetes, @datafim, @dataproposta, @cc_promotor, @cc_sM)";
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@Id", E.Id);
             cmd.Parameters.AddWithValue("@Nome", E.Name);
             cmd.Parameters.AddWithValue("@Numdias", E.Numdias);
             cmd.Parameters.AddWithValue("@Dataini", DateTime.Parse(E.Dataini));
             cmd.Parameters.AddWithValue("@Numbilhetes", E.NumBilhetes);
+            cmd.Parameters.AddWithValue("@datafim", DateTime.Parse(E.Datafim));
+            cmd.Parameters.AddWithValue("@dataproposta", DateTime.Parse(E.DataProposta));
+            cmd.Parameters.AddWithValue("@cc_promotor", E.Cc_promotor);
+            cmd.Parameters.AddWithValue("@cc_sM", E.Cc_stageManager);
             cmd.Connection = cn;
 
             try
@@ -148,6 +190,10 @@ namespace interfaceBD
                 E.NumBilhetes = numbilhetes.Text;
                 E.Numdias = numdias.Text;
                 E.Dataini = datainicio.Text;
+                E.Datafim = datefim.Text;
+                E.DataProposta = dataproposta.Text;
+                E.Cc_stageManager = ccstageManager.Text;
+                E.Cc_promotor = ccpromotor.Text;
 
             }
             catch (Exception ex)
@@ -162,13 +208,17 @@ namespace interfaceBD
                 return;
             SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "UPDATE EM.EVENTO " + "SET nome = @Nome, numdias = @Numdias, dataini = @Dataini, numbilhetes = @Numbilhetes WHERE id = @Id";
+            cmd.CommandText = "UPDATE EM.EVENTO " + "SET nome = @Nome, numdias = @Numdias, dataini = @Dataini, numbilhetes = @Numbilhetes, datafim = @datafim, dataproposta = @dataproposta, cc_promotor = @cc_promotor, cc_stageManager = @cc_sM WHERE id = @Id";
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@Id", E.Id);
             cmd.Parameters.AddWithValue("@Nome", E.Name);
             cmd.Parameters.AddWithValue("@Numdias", E.Numdias);
             cmd.Parameters.AddWithValue("@Dataini", DateTime.Parse(E.Dataini));
             cmd.Parameters.AddWithValue("@Numbilhetes", E.NumBilhetes);
+            cmd.Parameters.AddWithValue("@datafim", DateTime.Parse(E.Datafim));
+            cmd.Parameters.AddWithValue("@dataproposta", DateTime.Parse(E.DataProposta));
+            cmd.Parameters.AddWithValue("@cc_promotor", E.Cc_promotor);
+            cmd.Parameters.AddWithValue("@cc_sM", E.Cc_stageManager);
             cmd.Connection = cn;
 
             try
@@ -227,7 +277,10 @@ namespace interfaceBD
             datainicio.Text = E.Dataini;
             numdias.Text = E.Numdias;
             numbilhetes.Text = E.NumBilhetes;
-
+            datefim.Text = E.Datafim;
+            ccpromotor.Text = E.Cc_promotor;
+            ccstageManager.Text = E.Cc_stageManager;
+            dataproposta.Text = E.DataProposta;
         }
         public void ClearFields()
         {
@@ -236,6 +289,10 @@ namespace interfaceBD
             datainicio.Text= "";
             numdias.Text = "";
             numbilhetes.Text = "";
+            datefim.Text = "";
+            ccpromotor.Text = "";
+            ccstageManager.Text = "";
+            dataproposta.Text = "";
         }
 
         private SqlConnection getSGBDConnection()
@@ -272,6 +329,7 @@ namespace interfaceBD
                 ShowEvent();
             }
             EditEvent.Visible = false;
+            deleteEvento.Visible = false;
             adicionarEvento.Visible = false;
             adicionar.Visible = false;
             Update.Visible = true;
