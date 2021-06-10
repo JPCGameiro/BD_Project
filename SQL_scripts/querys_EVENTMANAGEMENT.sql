@@ -76,4 +76,9 @@ FROM EM.INSTRUMENTO, EM.MUSICO, EM.BANDA
 WHERE id_banda=EM.BANDA.id AND numCC = musicoCC
 GROUP BY EM.BANDA.id, EM.BANDA.nome;
 
+/* Empresas de catering e o número de eventos aos quais fornecem serviços */
+SELECT nif, EM.EMPRESACATERING.nome, COUNT(EM.EVENTO.nome) as numEventos 
+FROM EM.REFEICAO, EM.EMPRESACATERING, EM.EVENTO
+WHERE nif_empresa = nif AND id_evento = EM.EVENTO.id
+GROUP BY nif, EM.EMPRESACATERING.nome;
 
