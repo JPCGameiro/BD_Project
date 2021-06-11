@@ -12,12 +12,12 @@ using Eventos;
 
 namespace interfaceBD
 {
-    public partial class Form1 : Form
+    public partial class EventoMain : Form
     {
         private SqlConnection cn;
         private int currentEvent;
 
-        public Form1()
+        public EventoMain()
         {
             InitializeComponent();
         }
@@ -28,7 +28,10 @@ namespace interfaceBD
             cn = getSGBDConnection();
             adicionar.Visible = false;
             Update.Visible = false;
+            HideOverviewSection();
+            HideConcertosSection();
             loadEventos();
+            
 
 
         }
@@ -87,7 +90,8 @@ namespace interfaceBD
             deleteEvento.Visible = false;
             EditEvent.Visible = false;
             ClearFields();
-            if (reader.Read()) {
+            if (reader.Read())
+            {
                 idEvento.Text = ((int)(reader["entry"]) + 1).ToString();
             }
             cn.Close();
@@ -141,6 +145,30 @@ namespace interfaceBD
             cn.Close();
         }
 
+        private void LoadConcertos()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("select * from EM.V_CONCERTOS", cn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox3.Items.Clear();
+            listBox3.Items.Add(Concerto.Fline());
+            while (reader.Read())
+            {
+                Concerto C = new Concerto();
+                C.Id = reader["id"].ToString();
+                C.Nome = reader["nome"].ToString();
+                C.Id_evento = reader["id_evento"].ToString();
+                C.Banda = reader["banda"].ToString();
+                C.Id_banda = reader["id_banda"].ToString().Split(' ')[0];
+                C.Dataini = reader["datatimeini"].ToString().Split(' ')[0];
+                C.Duracao = reader["duracao"].ToString();
+                listBox3.Items.Add(C);
+            }
+            cn.Close();
+        }
+
 
         private void SubmitEvento(Evento E)
         {
@@ -171,7 +199,7 @@ namespace interfaceBD
             }
             finally
             {
-                MessageBox.Show("Event \""+ E.Name + "\" with succsess");
+                MessageBox.Show("Event \"" + E.Name + "\" with succsess");
                 cn.Close();
             }
             adicionar.Visible = false;
@@ -286,7 +314,7 @@ namespace interfaceBD
         {
             idEvento.Text = "";
             nomeEvento.Text = "";
-            datainicio.Text= "";
+            datainicio.Text = "";
             numdias.Text = "";
             numbilhetes.Text = "";
             datefim.Text = "";
@@ -383,6 +411,139 @@ namespace interfaceBD
             adicionar.Visible = false;
             Update.Visible = false;
             deleteEvento.Visible = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HideEventoSection();
+            listBox2.Show();
+            groupboxOverview.Show();
+            LoadOverview();
+
+        }
+
+        private void LoadOverview()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM EM.V_OVERVIEW", cn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox2.Items.Clear();
+            listBox2.Items.Add(Overview.Fline());
+            while (reader.Read())
+            {
+                Overview O = new Overview();
+                O.Nome = reader["nome"].ToString();
+                O.Numdias = reader["numdias"].ToString();
+                O.Numbilhetes = reader["numbilhetes"].ToString();
+                O.Dataini = reader["dataini"].ToString().Split(' ')[0];
+                O.Banda = reader["BANDA"].ToString();
+                O.Promotor = reader["PROMOTOR"].ToString().Split(' ')[0]; ;
+                O.Duracao = reader["duracao"].ToString();
+                listBox2.Items.Add(O);
+            }
+            cn.Close();
+        }
+
+        private void HideEventoSection()
+        {
+            listBox1.Hide();
+            label1.Hide();
+            label2.Hide();
+            label3.Hide();
+            label4.Hide();
+            label5.Hide();
+            label6.Hide();
+            label7.Hide();
+            label8.Hide();
+            Label1X.Hide();
+            nomeEvento.Hide();
+            idEvento.Hide();
+            datainicio.Hide();
+            datefim.Hide();
+            dataproposta.Hide();
+            numdias.Hide();
+            numbilhetes.Hide();
+            ccpromotor.Hide();
+            ccstageManager.Hide();
+            groupBox1.Hide();
+            idrb.Hide();
+            namerb.Hide();
+            promotorrb.Hide();
+            stageManagerrb.Hide();
+            searchbar.Hide();
+            button2.Hide();
+            deleteEvento.Hide();
+            adicionarEvento.Hide();
+            EditEvent.Hide();
+            Update.Hide();
+            adicionar.Hide();
+        }
+
+        private void HideOverviewSection()
+        {
+            listBox2.Hide();
+            groupboxOverview.Hide();
+        }
+
+        private void HideConcertosSection()
+        {
+            listBox3.Hide();
+            listBox2.Hide();
+            editConcertoBtn.Hide();
+            deleteConcertoBtn.Hide();
+            addConcertoBtn.Hide();
+            editConcertoBtn.Hide();
+            UpdateConcertoBtn.Hide();
+            adicionarConcertoBtn.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            HideOverviewSection();
+            HideConcertosSection();
+            listBox1.Show();
+            label1.Show();
+            label2.Show();
+            label3.Show();
+            label4.Show();
+            label5.Show();
+            label6.Show();
+            label7.Show();
+            label8.Show();
+            Label1X.Show();
+            nomeEvento.Show();
+            idEvento.Show();
+            datainicio.Show();
+            datefim.Show();
+            dataproposta.Show();
+            numdias.Show();
+            numbilhetes.Show();
+            ccpromotor.Show();
+            ccstageManager.Show();
+            groupBox1.Show();
+            idrb.Show();
+            namerb.Show();
+            promotorrb.Show();
+            stageManagerrb.Show();
+            searchbar.Show();
+            button2.Show();
+            deleteEvento.Show();
+            adicionarEvento.Show();
+            EditEvent.Show();
+        }
+
+        private void concertobtn_Click(object sender, EventArgs e)
+        {
+            HideOverviewSection();
+            HideEventoSection();
+            listBox3.Show();
+            deleteConcertoBtn.Show();
+            editConcertoBtn.Show();
+            deleteConcertoBtn.Show();
+            adicionarConcertoBtn.Show();
+            LoadConcertos();
         }
     }
 }
