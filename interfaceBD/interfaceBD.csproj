@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Banda.cs" />
     <Compile Include="Concerto.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="EventoMain.cs">
@@ -54,6 +55,7 @@
     <Compile Include="EventoMain.Designer.cs">
       <DependentUpon>EventoMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Musico.cs" />
     <Compile Include="Overview.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
