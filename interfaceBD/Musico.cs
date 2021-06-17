@@ -24,12 +24,12 @@ namespace interfaceBD
 
         public override String ToString()
         {
-            return String.Format("{0, -12}{1, -25}{2, -20}{3, -30}{4, -6}{5, -25}", NumCC, Nome, NomeArt, Email, Sexo, Banda);
+            return String.Format("{0, -12}{1, -36}{2, -26}{3, -30}{4, -6}{5, -25}", NumCC, Nome, NomeArt, Email, Sexo, Banda);
         }
 
         public static String Fline()
         {
-            return String.Format("{0, -12}{1, -25}{2, -20}{3, -30}{4, -6}{5, -25}", "CC", "Nome", "Nome Artistico", "Email", "Sexo", "Banda");
+            return String.Format("{0, -12}{1, -36}{2, -26}{3, -30}{4, -6}{5, -25}", "CC", "Nome", "Nome Artistico", "Email", "Sexo", "Banda");
         }
     }
 }

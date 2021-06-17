@@ -34,9 +34,6 @@ namespace interfaceBD
             HideBandasSection();
             HideMusicosSection();
             loadEventos();
-            
-
-
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -391,7 +388,7 @@ namespace interfaceBD
                 cn.Close();
             }
         }
-        // adicionar, editar, remover evento
+        // adicionar, editar, remover Concerto
         private void adicionarConcertoBtn_Click(object sender, EventArgs e)
         {
             addConcertoBtn.Visible = true;
@@ -402,8 +399,53 @@ namespace interfaceBD
         }
         private void addConcertoBtn_Click(object sender, EventArgs e)
         {
-
+            Concerto C = new Concerto();
+            C.Id = idEvento.Text;
+            C.Dataini = dataini_dtpicker_data_input.Text + horaini_concerto_dtpicker.Text;
+            C.Duracao = duracao_dtpicker_hora.Text;
+            C.Id_banda = id_banda_input.Text;
+            C.Id_evento = id_evento_input.Text;
+            C.Id_scheck = id_soundcheck_input.Text;
+            // adicionar evento à bd
+            SubmitConcerto(C);
         }
+        private void SubmitConcerto(Concerto C)
+        {
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "INSERT EM.EVENTO (id, datatimeini, duracao, id_banda, id_evento, id_soundcheck) VALUES (@ID, @Data, @dur, @id_b, @id_e, @id_s)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@ID", C.Id);
+            cmd.Parameters.AddWithValue("@Data", DateTime.Parse(C.Dataini));
+            cmd.Parameters.AddWithValue("@dur", C.Duracao);
+            cmd.Parameters.AddWithValue("@id_b", C.Id_banda);
+            cmd.Parameters.AddWithValue("@id_e", C.Id_evento);
+            cmd.Parameters.AddWithValue("@id_s", C.Id_scheck);
+            cmd.Connection = cn;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update contact in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                MessageBox.Show("Concerto \"" + C.Id + "\" with succsess");
+                cn.Close();
+            }
+            addConcertoBtn.Visible = false;
+            adicionarConcertoBtn.Visible = true;
+            editConcertoBtn.Visible = true;
+            deleteConcertoBtn.Visible = true;
+        }
+
+        
+
 
         // load from database
         private void loadEventos()
@@ -560,7 +602,7 @@ namespace interfaceBD
             promotorrb.Show();
             stageManagerrb.Show();
             searchbar.Show();
-            button2.Show();
+            SearchBtn_Eventos.Show();
             deleteEvento.Show();
             adicionarEvento.Show();
             EditEvent.Show();
@@ -601,7 +643,7 @@ namespace interfaceBD
             id_evento_input.Show();
             id_soundcheck_label.Show();
             id_soundcheck_input.Show();
-            groupBox_concertos.Show();
+            groupBox_Concertos.Show();
             LoadConcertos();
         }
         private void bandabtn_Click(object sender, EventArgs e)
@@ -652,7 +694,7 @@ namespace interfaceBD
             promotorrb.Hide();
             stageManagerrb.Hide();
             searchbar.Hide();
-            button2.Hide();
+            SearchBtn_Eventos.Hide();
             deleteEvento.Hide();
             adicionarEvento.Hide();
             EditEvent.Hide();
@@ -690,7 +732,7 @@ namespace interfaceBD
             id_evento_input.Hide();
             id_soundcheck_label.Hide();
             id_soundcheck_input.Hide();
-            groupBox_concertos.Hide();
+            groupBox_Concertos.Hide();
         }
         private void HideBandasSection()
         {
