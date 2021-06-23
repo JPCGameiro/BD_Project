@@ -82,7 +82,102 @@ SELECT * FROM getBandasByIDEvento(14);
 
 
 
---Dado o id de uma Banda devolver as músicos constituintes que vão tocar
+
+
+
+--Dado o id de uma Banda devolver os seus concertos
+GO
+CREATE FUNCTION getConcertosByIDBanda (@banda_id VARCHAR(20)) RETURNS TABLE AS
+	RETURN(SELECT * FROM EM.CONCERTO
+		   WHERE id_banda = @banda_id)
+GO
+--Teste
+SELECT * FROM geTConcertosByIDBanda('gd');
+
+--Dado o nome de uma Banda devolver os seus concertos
+GO
+CREATE FUNCTION getConcertosByNomeBanda( @nome VARCHAR(150)) RETURNS TABLE AS
+	RETURN(SELECT EM.EVENTO.id AS IdEvento, EM.EVENTO.nome AS NomeEvento, EM.CONCERTO.id AS IdConcerto, EM.BANDA.nome, id_banda,  datatimeini, duracao 
+		   FROM EM.BANDA, EM.CONCERTO, EM.EVENTO
+		   WHERE EM.BANDA.nome=@nome AND EM.BANDA.id=id_banda AND id_evento=EM.EVENTO.id);
+GO
+--Teste
+SELECT * FROM getConcertosByNomeBanda('Green Day')
+
+
+
+
+
+
+
+-- Pesquisar músico por músico por CC
+GO
+CREATE FUNCTION getMusicoByCC (@cc VARCHAR(12)) RETURNS TABLE AS
+	RETURN(SELECT EM.MUSICO.numCC AS CC, EM.PESSOA.nome AS Nome, EM.MUSICO.nomeArst AS NomeArtistico, EM.PESSOA.email AS Email, sexo AS Sexo, EM.BANDA.nome AS BANDA 
+		   FROM EM.MUSICO, EM.PESSOA, EM.BANDA
+		   WHERE EM.MUSICO.numCC = @cc AND EM.PESSOA.numCC = @cc AND id_banda=id)
+GO
+--Teste
+SELECT * FROM getMusicoByCC(10111732);
+
+-- Pesquisar músico por músico por Nome
+GO
+CREATE FUNCTION getMusicoByName (@name VARCHAR(12)) RETURNS TABLE AS
+	RETURN(SELECT EM.MUSICO.numCC AS CC, EM.PESSOA.nome AS Nome, EM.MUSICO.nomeArst AS NomeArtistico, EM.PESSOA.email AS Email, sexo AS Sexo, EM.BANDA.nome AS BANDA 
+		   FROM EM.MUSICO, EM.PESSOA, EM.BANDA
+		   WHERE EM.PESSOA.nome = @name AND EM.MUSICO.numCC = EM.PESSOA.numCC AND id_banda=id)
+GO
+--Teste
+SELECT * FROM getMusicoByName('Sara Ramos');
+
+-- Pesquisar músico por músico por Nome Artistico
+GO
+CREATE FUNCTION getMusicoByArstName (@ar_name VARCHAR(12)) RETURNS TABLE AS
+	RETURN(SELECT EM.MUSICO.numCC AS CC, EM.PESSOA.nome AS Nome, EM.MUSICO.nomeArst AS NomeArtistico, EM.PESSOA.email AS Email, sexo AS Sexo, EM.BANDA.nome AS BANDA 
+		   FROM EM.MUSICO, EM.PESSOA, EM.BANDA
+		   WHERE EM.MUSICO.nomeArst = @ar_name AND EM.PESSOA.numCC = EM.MUSICO.numCC AND id_banda=id)
+GO
+--Teste
+SELECT * FROM getMusicoByArstName('Sara Ramos');
+
+
+
+
+
+
+
+--Dado um id devolver a banda
+GO
+CREATE FUNCTION getBandaById (@id VARCHAR(20)) RETURNS TABLE AS
+	RETURN(SELECT * FROM EM.BANDA
+		   WHERE id=@id)
+GO
+--Teste
+SELECT * FROM getBandaById('ff');
+
+--Dado um nome devolver a banda
+GO
+CREATE FUNCTION getBandaByNome (@nome VARCHAR(250)) RETURNS TABLE AS
+	RETURN(SELECT * FROM EM.BANDA
+		   WHERE nome=@nome)
+GO
+--Teste
+SELECT * FROM getBandaByNome('Foo Fighters');
+
+--Dado um género devolver bandas
+GO
+CREATE FUNCTION getBandaByGenre (@genre VARCHAR(200)) RETURNS TABLE AS
+	RETURN(SELECT * FROM EM.BANDA
+		   WHERE genero=@genre)
+GO
+--Teste
+SELECT * FROM getBandaByGenre('Punk');
+
+
+
+
+
+--Dado o id de uma Banda devolver os músicos constituintes que vão tocar
 GO
 CREATE FUNCTION getMusicosByIDBanda (@banda_id VARCHAR(20)) RETURNS TABLE AS
 	RETURN(SELECT * FROM EM.MUSICO
@@ -90,4 +185,29 @@ CREATE FUNCTION getMusicosByIDBanda (@banda_id VARCHAR(20)) RETURNS TABLE AS
 GO
 --Teste
 SELECT * FROM getMusicosByIDBanda('gd');
--- IDEIA : fazer uma função para obter músicos de apoio???? 
+
+
+
+
+
+-- Dado uma data de inicio e de fim dar os eventos aí dentro
+GO
+CREATE FUNCTION getEventosInBetween (@data_inicio DATE, @data_fim DATE) RETURNS TABLE AS
+	RETURN(SELECT * 
+		   FROM EM.EVENTO
+		   WHERE (dataini >= @data_inicio AND dataini <= @data_fim) OR (datafim >= @data_inicio AND datafim <= @data_fim)) 
+GO
+--Teste
+SELECT * FROM EM.EVENTO;
+SELECT * FROM getEventosInBetween('2018-05-28', '2018-06-03');
+
+
+-- Dada uma duração minima e uma duração máxima devolver todos os concertos cuja duração se encontra entre esses valores
+GO
+CREATE FUNCTION getConcertosDuracaoInBetween (@min TIME, @max TIME) RETURNS TABLE AS
+	RETURN(SELECT * FROM EM.CONCERTO
+		   WHERE (duracao >= @min AND duracao <= @max)) 
+GO
+--Teste
+SELECT * FROM EM.CONCERTO;
+SELECT * FROM getConcertosDuracaoInBetween('02:00:00', '05:00:00');
