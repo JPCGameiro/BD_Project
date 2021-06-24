@@ -34,12 +34,12 @@ namespace interfaceBD
 
         public override String ToString()
         {
-            return String.Format("{0, -5}{1, -33}{2, -5}{3, -33}{4, -9}{5, -12}{6, -12}{7, -15}{8, 12}{9,25}", Id, Nome, Id_evento, Banda, Id_banda, Dataini, Duracao, Id_scheck, Duracao_scheck, Datatimeini_scheck);
+            return String.Format("{0, -5}{1, -33}{2, -5}{3, -33}{4, -9}{5, -12}{6, -12}{7, -15}{8, -20}{9,-30}", Id, Nome, Id_evento, Banda, Id_banda, Dataini, Duracao, Id_scheck, Duracao_scheck, Datatimeini_scheck);
         }
 
         public static String Fline()
         {
-            return String.Format("{0, -5}{1, -33}{2, -5}{3, -33}{4, -9}{5, -12}{6, -12}{7, -15}{8, 12}{9,25}", "Id", "Evento", "Id", "Banda", "Id Banda", "Data Hora", "Duracao", "Id SoundCheck", "Duracao Soundcheck", "Data Hora inicio");
+            return String.Format("{0, -5}{1, -33}{2, -5}{3, -33}{4, -9}{5, -12}{6, -12}{7, -15}{8, -20}{9,-30}", "Id", "Evento", "Id", "Banda", "Id Banda", "Data Hora", "Duracao", "Id SoundCheck", "Duracao Soundcheck", "Data Hora inicio");
         }
     }
 }
