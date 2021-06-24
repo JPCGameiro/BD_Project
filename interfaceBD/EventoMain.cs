@@ -35,36 +35,298 @@ namespace interfaceBD
             HideMusicosSection();
             loadEventos();
         }
+        private void SearchBtnOverview_Click(object sender, EventArgs e)
+        {
+            if (searchbarOverview.Text != "")
+            {
+                if (!verifySGBDConnection())
+                    return;
+                SqlCommand cmd = new SqlCommand("SELECT * from getOverviewByNome(" + searchbarOverview.Text + ")", cn);
+                if (radiobtn_nome_OVERVIEW.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getOverviewByNome('" + searchbarOverview.Text + "')", cn);
+                }
+                else if (radiobtn_numdias_OVERVIEW.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getOverviewByNumdias(" + searchbarOverview.Text + ")", cn);
+                }
+                else if (radiobtn_banda_OVERVIEW.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getOverviewByBanda('" + searchbarOverview.Text + "')", cn);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a filter1!");
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    listBox2.Items.Clear();
+                    listBox2.Items.Add(Overview.Fline());
+                    while (reader.Read())
+                    {
+                        Overview O = new Overview();
+                        O.Nome = reader["nome"].ToString();
+                        O.Numdias = reader["numdias"].ToString();
+                        O.Numbilhetes = reader["numbilhetes"].ToString();
+                        O.Dataini = reader["dataini"].ToString().Split(' ')[0];
+                        O.Banda = reader["BANDA"].ToString();
+                        O.Promotor = reader["PROMOTOR"].ToString().Split(' ')[0]; ;
+                        O.Duracao = reader["duracao"].ToString();
+                        listBox2.Items.Add(O);
+                    }
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+                    ;
+                }
+            }
+            else if (radiobtn_filtar_DateTime_OVERVIEW.Checked)
+            {
+                if (!verifySGBDConnection())
+                    return;
+                SqlCommand cmd;
+                String start = String.Format("{0:u}", filtros_start_date.Value);
+                String end = String.Format("{0:u}", filtros_end_date.Value);
+                cmd = new SqlCommand("SELECT * from getEventosInBetween('" + start.ToString().Split(' ')[0] + "', '" + end.ToString().Split(' ')[0] + "')", cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                listBox2.Items.Clear();
+                listBox2.Items.Add(Evento.Fline());
+                while (reader.Read())
+                {
+                    Evento E = new Evento();
+                    E.Id = reader["id"].ToString();
+                    E.Name = reader["nome"].ToString();
+                    E.Numdias = reader["numdias"].ToString();
+                    E.NumBilhetes = reader["numbilhetes"].ToString();
+                    E.Dataini = reader["dataini"].ToString().Split(' ')[0];
+                    E.Datafim = reader["datafim"].ToString().Split(' ')[0]; ;
+                    E.Cc_promotor = reader["cc_promotor"].ToString();
+                    E.DataProposta = reader["dataproposta"].ToString().Split(' ')[0]; ;
+                    E.Cc_stageManager = reader["cc_stageManager"].ToString();
+                    listBox2.Items.Add(E);
+                }
+                cn.Close();
+            }
+            else
+            {
+                LoadOverview();
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (searchbar.Text != "")
-            {
-                String str = "";
+            { 
+                if (!verifySGBDConnection())
+                    return;
+                SqlCommand cmd = new SqlCommand("SELECT * from getEventosById(" + searchbar.Text + ")", cn);
                 if (idrb.Checked)
                 {
-                    str = "id LIKE '%" + searchbar.Text + "%'";
+                    cmd = new SqlCommand("SELECT * from getEventosById(" + searchbar.Text + ")", cn);
                 }
                 else if (namerb.Checked)
                 {
-                    str = "nome LIKE '%" + searchbar.Text + "%'";
+                    cmd = new SqlCommand("SELECT * from getEventosByNome('" + searchbar.Text + "')", cn);
                 }
                 else if (promotorrb.Checked)
                 {
-                    str = "cc_promotor LIKE '%" + searchbar.Text + "%'";
+                    cmd = new SqlCommand("SELECT * from getEventosByPromotor(" + searchbar.Text + ")", cn);
                 }
                 else if (stageManagerrb.Checked)
                 {
-                    str = "cc_stageManager LIKE '%" + searchbar.Text + "%'";
+                    cmd = new SqlCommand("SELECT * from getEventosByStageManager(" + searchbar.Text + ")", cn);
                 }
                 else
                 {
                     MessageBox.Show("Please select a filter!");
                 }
-                loadEventos("SELECT * FROM EM.EVENTO WHERE " + str);
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    listBox1.Items.Clear();
+                    listBox1.Items.Add(Evento.Fline());
+                    while (reader.Read())
+                    {
+                        Evento E = new Evento();
+                        E.Id = reader["id"].ToString();
+                        E.Name = reader["nome"].ToString();
+                        E.Numdias = reader["numdias"].ToString();
+                        E.NumBilhetes = reader["numbilhetes"].ToString();
+                        E.Dataini = reader["dataini"].ToString().Split(' ')[0];
+                        E.Datafim = reader["datafim"].ToString().Split(' ')[0]; ;
+                        E.Cc_promotor = reader["cc_promotor"].ToString();
+                        E.DataProposta = reader["dataproposta"].ToString().Split(' ')[0]; ;
+                        E.Cc_stageManager = reader["cc_stageManager"].ToString();
+                        listBox1.Items.Add(E);
+                    }
+                    cn.Close();
+                } catch (Exception ex)
+                {
+                    ;
+                }
             }
             else
             {
                 loadEventos();
+            }
+        }
+        private void searchBtn_CONCERTOS_Click(object sender, EventArgs e)
+        {
+            if (search_bar_CONCERTOS.Text != "")
+            {
+                if (!verifySGBDConnection())
+                    return;
+                SqlCommand cmd = new SqlCommand("SELECT * from getConcertosByNomeBanda(" + search_bar_CONCERTOS.Text + ")", cn);
+                if (radiotn_CONCERTOS_nome.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getConcertosByNomeBanda(" + search_bar_CONCERTOS.Text + ")", cn);
+                }
+                else if (radiobtn_CONCERTOS_banda.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getMusicoByName('" + search_bar_CONCERTOS.Text + "')", cn);
+                }
+                else if (radiotn_MUSICOS_nomeArt.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getMusicoByArstName('" + search_bar_CONCERTOS.Text + "')", cn);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a filter!");
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    listBox_musicos.Items.Clear();
+                    listBox_musicos.Items.Add(Musico.Fline());
+                    while (reader.Read())
+                    {
+                        Musico M = new Musico();
+                        M.NumCC = reader["numCC"].ToString();
+                        M.Nome = reader["nome"].ToString();
+                        M.NomeArt = reader["nomeArst"].ToString();
+                        M.Email = reader["email"].ToString();
+                        M.Sexo = reader["sexo"].ToString();
+                        M.Banda = reader["banda"].ToString();
+                        listBox_musicos.Items.Add(M);
+                    }
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+                    ;
+                }
+            }
+            else
+            {
+                LoadMusicos();
+            }
+        }
+
+        private void searchBtn_MUSICOS_Click(object sender, EventArgs e)
+        {
+            if (searchbox_MUSICOS.Text != "")
+            {
+                if (!verifySGBDConnection())
+                    return;
+                SqlCommand cmd = new SqlCommand("SELECT * from getMusicoByCC(" + searchbox_MUSICOS.Text + ")", cn);
+
+                if (radiotn_MUSICOS_CC.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getMusicoByCC(" + searchbox_MUSICOS.Text + ")", cn);
+                }
+                else if (radiotn_MUSICOS_nome.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getMusicoByName('" + searchbox_MUSICOS.Text + "')", cn);
+                }
+                else if (radiotn_MUSICOS_nomeArt.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getMusicoByArstName('" + searchbox_MUSICOS.Text + "')", cn);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a filter!");
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    listBox_musicos.Items.Clear();
+                    listBox_musicos.Items.Add(Musico.Fline());
+                    while (reader.Read())
+                    {
+                        Musico M = new Musico();
+                        M.NumCC = reader["numCC"].ToString();
+                        M.Nome = reader["nome"].ToString();
+                        M.NomeArt = reader["nomeArst"].ToString();
+                        M.Email = reader["email"].ToString();
+                        M.Sexo = reader["sexo"].ToString();
+                        M.Banda = reader["banda"].ToString();
+                        listBox_musicos.Items.Add(M);
+                    }
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+                    ;
+                }
+            }
+            else
+            {
+                LoadMusicos();
+            }
+        }
+
+        private void searchbtn_BANDAS_Click(object sender, EventArgs e)
+        {
+            if (searchBox_BANDAS.Text != "")
+            {
+                if (!verifySGBDConnection())
+                    return;
+                SqlCommand cmd = new SqlCommand("SELECT * from getBandaById('" + searchBox_BANDAS.Text + "')", cn);
+
+                if (radiobtn_BANDAS_id.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getBandaById('" + searchBox_BANDAS.Text + "')", cn);
+                }
+                else if (radiobtn_BANDAS_nome.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getBandaByNome('" + searchBox_BANDAS.Text + "')", cn);
+                }
+                else if (radiobtn_BANDAS_genero.Checked)
+                {
+                    cmd = new SqlCommand("SELECT * from getBandaByGenre('" + searchBox_BANDAS.Text + "')", cn);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a filter!");
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    listBox_bandas.Items.Clear();
+                    listBox_bandas.Items.Add(Banda.Fline());
+                    while (reader.Read())
+                    {
+                        Banda B = new Banda();
+                        B.Id = reader["id"].ToString();
+                        B.Nome = reader["nome"].ToString();
+                        B.Telefone = "+" + reader["telefone"].ToString();
+                        B.Email = reader["email"].ToString();
+                        B.NumElem = reader["numElem"].ToString();
+                        B.Genero = reader["genero"].ToString();
+                        listBox_bandas.Items.Add(B);
+                    }
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+                    ;
+                }
+            }
+            else
+            {
+                LoadBandas();
             }
         }
 
@@ -97,22 +359,41 @@ namespace interfaceBD
             E = (Evento)listBox1.Items[currentEvent];
             idEvento.Text = E.Id;
             nomeEvento.Text = E.Name;
-            datainicio.Text = E.Dataini;
+            datainicio.Value = DateTime.Parse(E.Dataini);
             numdias.Text = E.Numdias;
             numbilhetes.Text = E.NumBilhetes;
-            datefim.Text = E.Datafim;
+            datefim.Value = DateTime.Parse(E.Datafim);
             ccpromotor.Text = E.Cc_promotor;
             ccstageManager.Text = E.Cc_stageManager;
             dataproposta.Text = E.DataProposta;
         }
+
         public void ShowConcerto()
         {
             if (listBox3.Items.Count == 0 | currentConcerto < 0)
                 return;
             Concerto C = new Concerto();
-            C = (Concerto)listBox1.Items[currentConcerto];
+            C = (Concerto)listBox3.Items[currentConcerto];
             id_concerto_input.Text = C.Id;
-            dataini_dtpicker_data_input.Text = C.Dataini;
+            dataini_dtpicker_data_input.Value = DateTime.Parse(C.Dataini);
+            id_evento_input.Text = C.Id_evento;
+            id_banda_input.Text = C.Id_banda;
+            id_soundcheck_input.Text = C.Id_scheck;
+            try
+            {
+                dtpicker_duracao_soundcheck.Value = DateTime.Parse(C.Duracao_scheck);
+            } catch (Exception ex)
+            {
+                ;
+            }
+            try
+            {
+                dtpicker_dataini_soundcheck.Value = DateTime.Parse(C.Datatimeini_scheck);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
         }
 
         public void ClearFields()
@@ -127,6 +408,7 @@ namespace interfaceBD
             ccstageManager.Text = "";
             dataproposta.Text = "";
         }
+
         public void ClearConcertosFields()
         {
             id_concerto_input.Text = "";
@@ -135,7 +417,11 @@ namespace interfaceBD
             duracao_dtpicker_hora.Text = "";
             id_banda_input.Text = "";
             id_evento_input.Text = "";
+            // soundcheck
             id_soundcheck_input.Text = "";
+            dtpicker_duracao_soundcheck.Text = "";
+            dtpicker_dataini_soundcheck.Text = "";
+            dtpicker_horaini_soundcheck.Text = "";
         }
 
         private SqlConnection getSGBDConnection()
@@ -234,8 +520,6 @@ namespace interfaceBD
             deleteEvento.Visible = true;
         }
 
-
-
         private void EditEvent_Click(object sender, EventArgs e)
         {
             currentEvent = listBox1.SelectedIndex;
@@ -271,6 +555,7 @@ namespace interfaceBD
             Update.Visible = false;
             deleteEvento.Visible = true;
         }
+
         public void UpdateEvent()
         {
             Evento E = new Evento();
@@ -297,21 +582,19 @@ namespace interfaceBD
 
             if (!verifySGBDConnection())
                 return;
-            SqlCommand cmd = new SqlCommand();
-
-            cmd.CommandText = "UPDATE EM.EVENTO " + "SET nome = @Nome, numdias = @Numdias, dataini = @Dataini, numbilhetes = @Numbilhetes, datafim = @datafim, dataproposta = @dataproposta, cc_promotor = @cc_promotor, cc_stageManager = @cc_sM WHERE id = @Id";
+            SqlCommand cmd = new SqlCommand("alter_evento", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@Id", E.Id);
-            cmd.Parameters.AddWithValue("@Nome", E.Name);
-            cmd.Parameters.AddWithValue("@Numdias", E.Numdias);
-            cmd.Parameters.AddWithValue("@Dataini", DateTime.Parse(E.Dataini));
-            cmd.Parameters.AddWithValue("@Numbilhetes", E.NumBilhetes);
+            cmd.Parameters.AddWithValue("@id", E.Id);
+            cmd.Parameters.AddWithValue("@nome", E.Name);
+            cmd.Parameters.AddWithValue("@numdias", E.Numdias);
+            cmd.Parameters.AddWithValue("@dataini", DateTime.Parse(E.Dataini));
+            cmd.Parameters.AddWithValue("@numBilhetes", E.NumBilhetes);
             cmd.Parameters.AddWithValue("@datafim", DateTime.Parse(E.Datafim));
             cmd.Parameters.AddWithValue("@dataproposta", DateTime.Parse(E.DataProposta));
             cmd.Parameters.AddWithValue("@cc_promotor", E.Cc_promotor);
-            cmd.Parameters.AddWithValue("@cc_sM", E.Cc_stageManager);
+            cmd.Parameters.AddWithValue("@cc_stagemanager", E.Cc_stageManager);
             cmd.Connection = cn;
-
             try
             {
                 rows = cmd.ExecuteNonQuery();
@@ -329,6 +612,7 @@ namespace interfaceBD
 
                 cn.Close();
             }
+            loadEventos();
         }
 
         private void deleteEvento_Click(object sender, EventArgs e)
@@ -368,9 +652,9 @@ namespace interfaceBD
         {
             if (!verifySGBDConnection())
                 return;
-            SqlCommand cmd = new SqlCommand();
 
-            cmd.CommandText = "DELETE EM.EVENTO WHERE id=@id";
+            SqlCommand cmd = new SqlCommand("delete_evento_byId", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@id", eventoId);
             cmd.Connection = cn;
@@ -388,6 +672,7 @@ namespace interfaceBD
                 cn.Close();
             }
         }
+
         // adicionar, editar, remover Concerto
         private void adicionarConcertoBtn_Click(object sender, EventArgs e)
         {
@@ -397,34 +682,56 @@ namespace interfaceBD
             deleteConcertoBtn.Visible = false;
             ClearConcertosFields();
         }
+
         private void addConcertoBtn_Click(object sender, EventArgs e)
         {
             Concerto C = new Concerto();
-            C.Id = idEvento.Text;
-            C.Dataini = dataini_dtpicker_data_input.Text + horaini_concerto_dtpicker.Text;
+            C.Id = id_concerto_input.Text;
+            C.Dataini = dataini_dtpicker_data_input.Text;
             C.Duracao = duracao_dtpicker_hora.Text;
             C.Id_banda = id_banda_input.Text;
             C.Id_evento = id_evento_input.Text;
+            // soundcheck
             C.Id_scheck = id_soundcheck_input.Text;
+            C.Datatimeini_scheck = dtpicker_dataini_soundcheck.Text;
+            C.Duracao_scheck = dtpicker_duracao_soundcheck.Text;
             // adicionar evento à bd
             SubmitConcerto(C);
         }
+
         private void SubmitConcerto(Concerto C)
         {
             if (!verifySGBDConnection())
                 return;
-            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand("create_concerto", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.CommandText = "INSERT EM.EVENTO (id, datatimeini, duracao, id_banda, id_evento, id_soundcheck) VALUES (@ID, @Data, @dur, @id_b, @id_e, @id_s)";
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@ID", C.Id);
-            cmd.Parameters.AddWithValue("@Data", DateTime.Parse(C.Dataini));
-            cmd.Parameters.AddWithValue("@dur", C.Duracao);
-            cmd.Parameters.AddWithValue("@id_b", C.Id_banda);
-            cmd.Parameters.AddWithValue("@id_e", C.Id_evento);
-            cmd.Parameters.AddWithValue("@id_s", C.Id_scheck);
+            cmd.Parameters.Add("@id", SqlDbType.VarChar);
+            cmd.Parameters["@id"].Value = C.Id;
+
+            cmd.Parameters.Add("@datatimeini", SqlDbType.DateTime);
+            cmd.Parameters["@datatimeini"].Value = DateTime.Parse(C.Dataini);
+
+            cmd.Parameters.Add("@duracao", SqlDbType.Time);
+            cmd.Parameters["@duracao"].Value = C.Duracao;
+
+            cmd.Parameters.Add("@id_banda", SqlDbType.VarChar);
+            cmd.Parameters["@id_banda"].Value = C.Id_banda;
+
+            cmd.Parameters.Add("@id_evento", SqlDbType.VarChar);
+            cmd.Parameters["@id_evento"].Value = C.Id_evento;
+
+            cmd.Parameters.Add("@id_soundcheck",SqlDbType.VarChar);
+            cmd.Parameters["@id_soundcheck"].Value = C.Id_scheck;
+
+            cmd.Parameters.Add("@duracao_s", SqlDbType.Time);
+            cmd.Parameters["@duracao_s"].Value = C.Duracao_scheck;
+
+            cmd.Parameters.Add("@data_s", SqlDbType.DateTime);
+            cmd.Parameters["@data_s"].Value = DateTime.Parse(C.Datatimeini_scheck);
+
             cmd.Connection = cn;
-
+            Console.WriteLine(cmd.CommandText);
             try
             {
                 cmd.ExecuteNonQuery();
@@ -444,8 +751,137 @@ namespace interfaceBD
             deleteConcertoBtn.Visible = true;
         }
 
-        
+        private void editConcertoBtn_Click(object sender, EventArgs e)
+        {
+            currentConcerto = listBox3.SelectedIndex;
+            if (currentConcerto <= 0)
+            {
+                MessageBox.Show("Please select a Concerto to edit");
+                return;
+            }
+            else
+            {
+                ShowConcerto();
+            }
+            editConcertoBtn.Visible = false;
+            deleteConcertoBtn.Visible = false;
+            adicionarConcertoBtn.Visible = false;
+            addConcertoBtn.Visible = false;
+            UpdateConcertoBtn.Visible = true;
+        }
 
+        private void UpdateConcertoBtn_Click(object sender, EventArgs e)
+        {
+            Concerto C = new Concerto();
+            try
+            {
+                C.Id = id_concerto_input.Text;
+                C.Dataini = dataini_dtpicker_data_input.Text + " " + horaini_concerto_dtpicker.Text;
+                C.Duracao = duracao_dtpicker_hora.Text;
+                C.Id_banda = id_banda_input.Text;
+                C.Id_evento = id_evento_input.Text;
+                C.Id_scheck = id_soundcheck_input.Text;
+                C.Duracao_scheck = dtpicker_duracao_soundcheck.Text;
+                C.Datatimeini_scheck = dtpicker_dataini_soundcheck.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            int rows = 0;
+
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand();
+
+            //cmd.CommandText = "";
+            //cmd.Parameters.Clear();
+            //cmd.Parameters.AddWithValue("@", );
+            //cmd.Parameters.AddWithValue("@", );
+            //cmd.Parameters.AddWithValue("@", );
+            //cmd.Parameters.AddWithValue("@", DateTime.Parse());
+            //cmd.Parameters.AddWithValue("@", );
+            //cmd.Parameters.AddWithValue("@", DateTime.Parse());
+            //cmd.Parameters.AddWithValue("@", DateTime.Parse());
+            //cmd.Connection = cn;
+
+            try
+            {
+                rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update Concert in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                if (rows == 1)
+                    MessageBox.Show("Update OK");
+                else
+                    MessageBox.Show("Update NOT OK");
+
+                cn.Close();
+            }
+        }
+
+        private void deleteConcertoBtn_Click(object sender, EventArgs e)
+        {
+            if (listBox3.SelectedIndex > -1)
+            {
+                try
+                {
+                    RemoveConcerto(((Concerto)listBox3.SelectedItem).Id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+                listBox3.Items.RemoveAt(listBox3.SelectedIndex);
+                if (currentEvent == listBox3.Items.Count)
+                    currentEvent = listBox3.Items.Count - 1;
+                if (currentEvent == -1)
+                {
+                    ClearConcertosFields();
+                    MessageBox.Show("There are no more Concertos");
+                }
+                else
+                {
+                    ShowConcerto();
+                }
+            }
+            editConcertoBtn.Visible = true;
+            adicionarConcertoBtn.Visible = true;
+            addConcertoBtn.Visible = false;
+            UpdateConcertoBtn.Visible = false;
+            deleteConcertoBtn.Visible = true;
+        }
+
+        public void RemoveConcerto(String concertoId)
+        {
+            if (!verifySGBDConnection())
+                return;
+            SqlCommand cmd = new SqlCommand("delete_evento_byId", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@id", concertoId);
+            cmd.Connection = cn;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to delete contact in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
 
         // load from database
         private void loadEventos()
@@ -644,6 +1080,7 @@ namespace interfaceBD
             id_soundcheck_label.Show();
             id_soundcheck_input.Show();
             groupBox_Concertos.Show();
+            Soundcheck_groupbox_concertos.Show();
             LoadConcertos();
         }
         private void bandabtn_Click(object sender, EventArgs e)
@@ -733,6 +1170,7 @@ namespace interfaceBD
             id_soundcheck_label.Hide();
             id_soundcheck_input.Hide();
             groupBox_Concertos.Hide();
+            Soundcheck_groupbox_concertos.Hide();
         }
         private void HideBandasSection()
         {
@@ -746,7 +1184,27 @@ namespace interfaceBD
             groupBox_musicos.Hide();
         }
 
-        private void UpdateConcertoBtn_Click(object sender, EventArgs e)
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox_bandas_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox_Concertos_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radiotn_CONCERTOS_nome_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox_bandas_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

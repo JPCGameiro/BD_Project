@@ -113,9 +113,9 @@ SELECT * FROM getConcertosByNomeBanda('Green Day')
 -- Pesquisar músico por músico por CC
 GO
 CREATE FUNCTION getMusicoByCC (@cc VARCHAR(12)) RETURNS TABLE AS
-	RETURN(SELECT EM.MUSICO.numCC AS CC, EM.PESSOA.nome AS Nome, EM.MUSICO.nomeArst AS NomeArtistico, EM.PESSOA.email AS Email, sexo AS Sexo, EM.BANDA.nome AS BANDA 
-		   FROM EM.MUSICO, EM.PESSOA, EM.BANDA
-		   WHERE EM.MUSICO.numCC = @cc AND EM.PESSOA.numCC = @cc AND id_banda=id)
+	RETURN(SELECT *
+		   FROM EM.V_MUSICOS
+		   WHERE numCC LIKE '%' + @name + '%');
 GO
 --Teste
 SELECT * FROM getMusicoByCC(10111732);
@@ -123,9 +123,9 @@ SELECT * FROM getMusicoByCC(10111732);
 -- Pesquisar músico por músico por Nome
 GO
 CREATE FUNCTION getMusicoByName (@name VARCHAR(12)) RETURNS TABLE AS
-	RETURN(SELECT EM.MUSICO.numCC AS CC, EM.PESSOA.nome AS Nome, EM.MUSICO.nomeArst AS NomeArtistico, EM.PESSOA.email AS Email, sexo AS Sexo, EM.BANDA.nome AS BANDA 
-		   FROM EM.MUSICO, EM.PESSOA, EM.BANDA
-		   WHERE EM.PESSOA.nome = @name AND EM.MUSICO.numCC = EM.PESSOA.numCC AND id_banda=id)
+	RETURN(SELECT *
+		   FROM EM.V_MUSICOS
+		   WHERE nome LIKE '%' + @name + '%');
 GO
 --Teste
 SELECT * FROM getMusicoByName('Sara Ramos');
@@ -133,9 +133,9 @@ SELECT * FROM getMusicoByName('Sara Ramos');
 -- Pesquisar músico por músico por Nome Artistico
 GO
 CREATE FUNCTION getMusicoByArstName (@ar_name VARCHAR(12)) RETURNS TABLE AS
-	RETURN(SELECT EM.MUSICO.numCC AS CC, EM.PESSOA.nome AS Nome, EM.MUSICO.nomeArst AS NomeArtistico, EM.PESSOA.email AS Email, sexo AS Sexo, EM.BANDA.nome AS BANDA 
-		   FROM EM.MUSICO, EM.PESSOA, EM.BANDA
-		   WHERE EM.MUSICO.nomeArst = @ar_name AND EM.PESSOA.numCC = EM.MUSICO.numCC AND id_banda=id)
+	RETURN(SELECT *
+		   FROM EM.V_MUSICOS
+		   WHERE nomeArst LIKE '%' + @ar_name + '%');
 GO
 --Teste
 SELECT * FROM getMusicoByArstName('Sara Ramos');
@@ -159,7 +159,7 @@ SELECT * FROM getBandaById('ff');
 GO
 CREATE FUNCTION getBandaByNome (@nome VARCHAR(250)) RETURNS TABLE AS
 	RETURN(SELECT * FROM EM.BANDA
-		   WHERE nome=@nome)
+		   WHERE nome LIKE '%' + @nome + '%')
 GO
 --Teste
 SELECT * FROM getBandaByNome('Foo Fighters');
@@ -211,3 +211,27 @@ GO
 --Teste
 SELECT * FROM EM.CONCERTO;
 SELECT * FROM getConcertosDuracaoInBetween('02:00:00', '05:00:00');
+go
+
+---------------------------
+
+
+CREATE FUNCTION getOverviewByNome (@nome VARCHAR(20)) RETURNS TABLE AS
+	RETURN(SELECT * FROM EM.V_OVERVIEW
+		   WHERE nome LIKE  '%' + @nome + '%')
+GO
+select * from getOverviewByNome('Festa')
+go
+
+CREATE FUNCTION getOverviewByNumdias (@numdias VARCHAR(20)) RETURNS TABLE AS
+	RETURN(SELECT * FROM EM.V_OVERVIEW
+		   WHERE numdias LIKE  '%' + @numdias + '%')
+GO
+select * from getOverviewByNumdias(2)
+go
+
+CREATE FUNCTION getOverviewByBanda (@banda VARCHAR(20)) RETURNS TABLE AS
+	RETURN(SELECT * FROM EM.V_OVERVIEW
+		   WHERE banda LIKE  '%' + @banda + '%')
+GO
+select * from getOverviewByBanda('F')

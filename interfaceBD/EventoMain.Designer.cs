@@ -66,14 +66,14 @@ namespace interfaceBD
             this.groupboxOverview = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.filtros_end_date = new System.Windows.Forms.DateTimePicker();
+            this.filtros_start_date = new System.Windows.Forms.DateTimePicker();
             this.SearchBtnOverview = new System.Windows.Forms.Button();
             this.searchbarOverview = new System.Windows.Forms.TextBox();
-            this.radiobtn_ = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radiobtn_filtar_DateTime_OVERVIEW = new System.Windows.Forms.RadioButton();
+            this.radiobtn_banda_OVERVIEW = new System.Windows.Forms.RadioButton();
+            this.radiobtn_numdias_OVERVIEW = new System.Windows.Forms.RadioButton();
+            this.radiobtn_nome_OVERVIEW = new System.Windows.Forms.RadioButton();
             this.concertobtn = new System.Windows.Forms.Button();
             this.bandabtn = new System.Windows.Forms.Button();
             this.musicosbtn = new System.Windows.Forms.Button();
@@ -100,19 +100,19 @@ namespace interfaceBD
             this.groupBox_Concertos = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.searchBtn_CONCERTOS = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.search_bar_CONCERTOS = new System.Windows.Forms.TextBox();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.radiobtn_CONCERTOS_banda = new System.Windows.Forms.RadioButton();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radiotn_CONCERTOS_nome = new System.Windows.Forms.RadioButton();
             this.groupBox_musicos = new System.Windows.Forms.GroupBox();
             this.searchBtn_MUSICOS = new System.Windows.Forms.Button();
             this.searchbox_MUSICOS = new System.Windows.Forms.TextBox();
             this.radiotn_MUSICOS_nomeArt = new System.Windows.Forms.RadioButton();
             this.radiotn_MUSICOS_nome = new System.Windows.Forms.RadioButton();
             this.radiotn_MUSICOS_CC = new System.Windows.Forms.RadioButton();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.radiobtn_CONCERTOS_banda = new System.Windows.Forms.RadioButton();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radiotn_CONCERTOS_nome = new System.Windows.Forms.RadioButton();
             this.listBox_bandas = new System.Windows.Forms.ListBox();
             this.listBox_musicos = new System.Windows.Forms.ListBox();
             this.groupBox_bandas = new System.Windows.Forms.GroupBox();
@@ -121,11 +121,19 @@ namespace interfaceBD
             this.radiobtn_BANDAS_genero = new System.Windows.Forms.RadioButton();
             this.radiobtn_BANDAS_nome = new System.Windows.Forms.RadioButton();
             this.radiobtn_BANDAS_id = new System.Windows.Forms.RadioButton();
+            this.Soundcheck_groupbox_concertos = new System.Windows.Forms.GroupBox();
+            this.label_duracao_soundcheck = new System.Windows.Forms.Label();
+            this.dtpicker_horaini_soundcheck = new System.Windows.Forms.DateTimePicker();
+            this.dtpicker_duracao_soundcheck = new System.Windows.Forms.DateTimePicker();
+            this.label_horaini_soundcheck = new System.Windows.Forms.Label();
+            this.dtpicker_dataini_soundcheck = new System.Windows.Forms.DateTimePicker();
+            this.label_dataini_soundcheck = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupboxOverview.SuspendLayout();
             this.groupBox_Concertos.SuspendLayout();
             this.groupBox_musicos.SuspendLayout();
             this.groupBox_bandas.SuspendLayout();
+            this.Soundcheck_groupbox_concertos.SuspendLayout();
             this.SuspendLayout();
             // 
             // Eventosbtn
@@ -312,11 +320,11 @@ namespace interfaceBD
             this.groupBox1.Controls.Add(this.idrb);
             this.groupBox1.Controls.Add(this.SearchBtn_Eventos);
             this.groupBox1.Controls.Add(this.searchbar);
-            this.groupBox1.Location = new System.Drawing.Point(12, 609);
+            this.groupBox1.Location = new System.Drawing.Point(13, 895);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1004, 71);
+            this.groupBox1.Size = new System.Drawing.Size(1005, 72);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "filtros";
@@ -477,19 +485,19 @@ namespace interfaceBD
             // 
             this.groupboxOverview.Controls.Add(this.label11);
             this.groupboxOverview.Controls.Add(this.label10);
-            this.groupboxOverview.Controls.Add(this.dateTimePicker2);
-            this.groupboxOverview.Controls.Add(this.dateTimePicker1);
+            this.groupboxOverview.Controls.Add(this.filtros_end_date);
+            this.groupboxOverview.Controls.Add(this.filtros_start_date);
             this.groupboxOverview.Controls.Add(this.SearchBtnOverview);
             this.groupboxOverview.Controls.Add(this.searchbarOverview);
-            this.groupboxOverview.Controls.Add(this.radiobtn_);
-            this.groupboxOverview.Controls.Add(this.radioButton3);
-            this.groupboxOverview.Controls.Add(this.radioButton2);
-            this.groupboxOverview.Controls.Add(this.radioButton1);
-            this.groupboxOverview.Location = new System.Drawing.Point(12, 609);
+            this.groupboxOverview.Controls.Add(this.radiobtn_filtar_DateTime_OVERVIEW);
+            this.groupboxOverview.Controls.Add(this.radiobtn_banda_OVERVIEW);
+            this.groupboxOverview.Controls.Add(this.radiobtn_numdias_OVERVIEW);
+            this.groupboxOverview.Controls.Add(this.radiobtn_nome_OVERVIEW);
+            this.groupboxOverview.Location = new System.Drawing.Point(12, 738);
             this.groupboxOverview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupboxOverview.Name = "groupboxOverview";
             this.groupboxOverview.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupboxOverview.Size = new System.Drawing.Size(1004, 71);
+            this.groupboxOverview.Size = new System.Drawing.Size(1004, 69);
             this.groupboxOverview.TabIndex = 31;
             this.groupboxOverview.TabStop = false;
             this.groupboxOverview.Text = "filtros";
@@ -497,7 +505,7 @@ namespace interfaceBD
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(304, 50);
+            this.label11.Location = new System.Drawing.Point(304, 45);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(32, 17);
             this.label11.TabIndex = 37;
@@ -506,25 +514,26 @@ namespace interfaceBD
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(304, 20);
+            this.label10.Location = new System.Drawing.Point(304, 14);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 17);
             this.label10.TabIndex = 36;
             this.label10.Text = "start";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
-            // dateTimePicker2
+            // filtros_end_date
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(346, 48);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker2.TabIndex = 35;
+            this.filtros_end_date.Location = new System.Drawing.Point(346, 44);
+            this.filtros_end_date.Name = "filtros_end_date";
+            this.filtros_end_date.Size = new System.Drawing.Size(200, 22);
+            this.filtros_end_date.TabIndex = 35;
             // 
-            // dateTimePicker1
+            // filtros_start_date
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(346, 18);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 34;
+            this.filtros_start_date.Location = new System.Drawing.Point(346, 16);
+            this.filtros_start_date.Name = "filtros_start_date";
+            this.filtros_start_date.Size = new System.Drawing.Size(200, 22);
+            this.filtros_start_date.TabIndex = 34;
             // 
             // SearchBtnOverview
             // 
@@ -535,6 +544,7 @@ namespace interfaceBD
             this.SearchBtnOverview.TabIndex = 33;
             this.SearchBtnOverview.Text = "Search";
             this.SearchBtnOverview.UseVisualStyleBackColor = true;
+            this.SearchBtnOverview.Click += new System.EventHandler(this.SearchBtnOverview_Click);
             // 
             // searchbarOverview
             // 
@@ -544,52 +554,52 @@ namespace interfaceBD
             this.searchbarOverview.Size = new System.Drawing.Size(312, 22);
             this.searchbarOverview.TabIndex = 32;
             // 
-            // radiobtn_
+            // radiobtn_filtar_DateTime_OVERVIEW
             // 
-            this.radiobtn_.AutoSize = true;
-            this.radiobtn_.Location = new System.Drawing.Point(275, 35);
-            this.radiobtn_.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radiobtn_.Name = "radiobtn_";
-            this.radiobtn_.Size = new System.Drawing.Size(17, 16);
-            this.radiobtn_.TabIndex = 32;
-            this.radiobtn_.TabStop = true;
-            this.radiobtn_.UseVisualStyleBackColor = true;
+            this.radiobtn_filtar_DateTime_OVERVIEW.AutoSize = true;
+            this.radiobtn_filtar_DateTime_OVERVIEW.Location = new System.Drawing.Point(275, 35);
+            this.radiobtn_filtar_DateTime_OVERVIEW.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radiobtn_filtar_DateTime_OVERVIEW.Name = "radiobtn_filtar_DateTime_OVERVIEW";
+            this.radiobtn_filtar_DateTime_OVERVIEW.Size = new System.Drawing.Size(17, 16);
+            this.radiobtn_filtar_DateTime_OVERVIEW.TabIndex = 32;
+            this.radiobtn_filtar_DateTime_OVERVIEW.TabStop = true;
+            this.radiobtn_filtar_DateTime_OVERVIEW.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radiobtn_banda_OVERVIEW
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(193, 31);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(69, 21);
-            this.radioButton3.TabIndex = 32;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "banda";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radiobtn_banda_OVERVIEW.AutoSize = true;
+            this.radiobtn_banda_OVERVIEW.Location = new System.Drawing.Point(193, 31);
+            this.radiobtn_banda_OVERVIEW.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radiobtn_banda_OVERVIEW.Name = "radiobtn_banda_OVERVIEW";
+            this.radiobtn_banda_OVERVIEW.Size = new System.Drawing.Size(69, 21);
+            this.radiobtn_banda_OVERVIEW.TabIndex = 32;
+            this.radiobtn_banda_OVERVIEW.TabStop = true;
+            this.radiobtn_banda_OVERVIEW.Text = "banda";
+            this.radiobtn_banda_OVERVIEW.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radiobtn_numdias_OVERVIEW
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(86, 31);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(90, 21);
-            this.radioButton2.TabIndex = 33;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "num. dias";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radiobtn_numdias_OVERVIEW.AutoSize = true;
+            this.radiobtn_numdias_OVERVIEW.Location = new System.Drawing.Point(86, 31);
+            this.radiobtn_numdias_OVERVIEW.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radiobtn_numdias_OVERVIEW.Name = "radiobtn_numdias_OVERVIEW";
+            this.radiobtn_numdias_OVERVIEW.Size = new System.Drawing.Size(90, 21);
+            this.radiobtn_numdias_OVERVIEW.TabIndex = 33;
+            this.radiobtn_numdias_OVERVIEW.TabStop = true;
+            this.radiobtn_numdias_OVERVIEW.Text = "num. dias";
+            this.radiobtn_numdias_OVERVIEW.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radiobtn_nome_OVERVIEW
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(5, 30);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(64, 21);
-            this.radioButton1.TabIndex = 32;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "nome";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radiobtn_nome_OVERVIEW.AutoSize = true;
+            this.radiobtn_nome_OVERVIEW.Location = new System.Drawing.Point(5, 30);
+            this.radiobtn_nome_OVERVIEW.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radiobtn_nome_OVERVIEW.Name = "radiobtn_nome_OVERVIEW";
+            this.radiobtn_nome_OVERVIEW.Size = new System.Drawing.Size(64, 21);
+            this.radiobtn_nome_OVERVIEW.TabIndex = 32;
+            this.radiobtn_nome_OVERVIEW.TabStop = true;
+            this.radiobtn_nome_OVERVIEW.Text = "nome";
+            this.radiobtn_nome_OVERVIEW.UseVisualStyleBackColor = true;
             // 
             // concertobtn
             // 
@@ -633,7 +643,7 @@ namespace interfaceBD
             this.listBox3.Location = new System.Drawing.Point(12, 62);
             this.listBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(993, 526);
+            this.listBox3.Size = new System.Drawing.Size(972, 526);
             this.listBox3.TabIndex = 35;
             this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
@@ -646,6 +656,7 @@ namespace interfaceBD
             this.deleteConcertoBtn.TabIndex = 36;
             this.deleteConcertoBtn.Text = "Delete Concerto";
             this.deleteConcertoBtn.UseVisualStyleBackColor = true;
+            this.deleteConcertoBtn.Click += new System.EventHandler(this.deleteConcertoBtn_Click);
             // 
             // editConcertoBtn
             // 
@@ -656,6 +667,7 @@ namespace interfaceBD
             this.editConcertoBtn.TabIndex = 37;
             this.editConcertoBtn.Text = "Edit Concerto";
             this.editConcertoBtn.UseVisualStyleBackColor = true;
+            this.editConcertoBtn.Click += new System.EventHandler(this.editConcertoBtn_Click);
             // 
             // adicionarConcertoBtn
             // 
@@ -684,7 +696,7 @@ namespace interfaceBD
             this.UpdateConcertoBtn.Location = new System.Drawing.Point(1387, 634);
             this.UpdateConcertoBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UpdateConcertoBtn.Name = "UpdateConcertoBtn";
-            this.UpdateConcertoBtn.Size = new System.Drawing.Size(121, 44);
+            this.UpdateConcertoBtn.Size = new System.Drawing.Size(121, 46);
             this.UpdateConcertoBtn.TabIndex = 40;
             this.UpdateConcertoBtn.Text = "Update";
             this.UpdateConcertoBtn.UseVisualStyleBackColor = true;
@@ -744,7 +756,7 @@ namespace interfaceBD
             // id_soundcheck_label
             // 
             this.id_soundcheck_label.AutoSize = true;
-            this.id_soundcheck_label.Location = new System.Drawing.Point(1400, 315);
+            this.id_soundcheck_label.Location = new System.Drawing.Point(6, 25);
             this.id_soundcheck_label.Name = "id_soundcheck_label";
             this.id_soundcheck_label.Size = new System.Drawing.Size(121, 17);
             this.id_soundcheck_label.TabIndex = 48;
@@ -752,7 +764,7 @@ namespace interfaceBD
             // 
             // id_soundcheck_input
             // 
-            this.id_soundcheck_input.Location = new System.Drawing.Point(1403, 335);
+            this.id_soundcheck_input.Location = new System.Drawing.Point(11, 44);
             this.id_soundcheck_input.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.id_soundcheck_input.Name = "id_soundcheck_input";
             this.id_soundcheck_input.Size = new System.Drawing.Size(93, 22);
@@ -818,25 +830,26 @@ namespace interfaceBD
             this.groupBox_Concertos.Controls.Add(this.label12);
             this.groupBox_Concertos.Controls.Add(this.searchBtn_CONCERTOS);
             this.groupBox_Concertos.Controls.Add(this.label13);
-            this.groupBox_Concertos.Controls.Add(this.textBox1);
+            this.groupBox_Concertos.Controls.Add(this.search_bar_CONCERTOS);
             this.groupBox_Concertos.Controls.Add(this.dateTimePicker3);
             this.groupBox_Concertos.Controls.Add(this.radiobtn_CONCERTOS_banda);
             this.groupBox_Concertos.Controls.Add(this.dateTimePicker4);
             this.groupBox_Concertos.Controls.Add(this.radioButton4);
             this.groupBox_Concertos.Controls.Add(this.radiotn_CONCERTOS_nome);
-            this.groupBox_Concertos.Location = new System.Drawing.Point(12, 609);
+            this.groupBox_Concertos.Location = new System.Drawing.Point(12, 663);
             this.groupBox_Concertos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox_Concertos.Name = "groupBox_Concertos";
             this.groupBox_Concertos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox_Concertos.Size = new System.Drawing.Size(1004, 71);
+            this.groupBox_Concertos.Size = new System.Drawing.Size(1005, 71);
             this.groupBox_Concertos.TabIndex = 34;
             this.groupBox_Concertos.TabStop = false;
             this.groupBox_Concertos.Text = "filtros";
+            this.groupBox_Concertos.Enter += new System.EventHandler(this.groupBox_Concertos_Enter);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(304, 50);
+            this.label12.Location = new System.Drawing.Point(304, 45);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 17);
             this.label12.TabIndex = 42;
@@ -851,6 +864,78 @@ namespace interfaceBD
             this.searchBtn_CONCERTOS.TabIndex = 33;
             this.searchBtn_CONCERTOS.Text = "Search";
             this.searchBtn_CONCERTOS.UseVisualStyleBackColor = true;
+            this.searchBtn_CONCERTOS.Click += new System.EventHandler(this.searchBtn_CONCERTOS_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(304, 17);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(36, 17);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "start";
+            // 
+            // search_bar_CONCERTOS
+            // 
+            this.search_bar_CONCERTOS.Location = new System.Drawing.Point(587, 28);
+            this.search_bar_CONCERTOS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.search_bar_CONCERTOS.Name = "search_bar_CONCERTOS";
+            this.search_bar_CONCERTOS.Size = new System.Drawing.Size(312, 22);
+            this.search_bar_CONCERTOS.TabIndex = 32;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker3.Location = new System.Drawing.Point(346, 43);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.ShowUpDown = true;
+            this.dateTimePicker3.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker3.TabIndex = 40;
+            // 
+            // radiobtn_CONCERTOS_banda
+            // 
+            this.radiobtn_CONCERTOS_banda.AutoSize = true;
+            this.radiobtn_CONCERTOS_banda.Location = new System.Drawing.Point(86, 31);
+            this.radiobtn_CONCERTOS_banda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radiobtn_CONCERTOS_banda.Name = "radiobtn_CONCERTOS_banda";
+            this.radiobtn_CONCERTOS_banda.Size = new System.Drawing.Size(69, 21);
+            this.radiobtn_CONCERTOS_banda.TabIndex = 33;
+            this.radiobtn_CONCERTOS_banda.TabStop = true;
+            this.radiobtn_CONCERTOS_banda.Text = "banda";
+            this.radiobtn_CONCERTOS_banda.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker4.Location = new System.Drawing.Point(346, 15);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.ShowUpDown = true;
+            this.dateTimePicker4.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker4.TabIndex = 39;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(275, 35);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(17, 16);
+            this.radioButton4.TabIndex = 38;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radiotn_CONCERTOS_nome
+            // 
+            this.radiotn_CONCERTOS_nome.AutoSize = true;
+            this.radiotn_CONCERTOS_nome.Location = new System.Drawing.Point(5, 30);
+            this.radiotn_CONCERTOS_nome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radiotn_CONCERTOS_nome.Name = "radiotn_CONCERTOS_nome";
+            this.radiotn_CONCERTOS_nome.Size = new System.Drawing.Size(64, 21);
+            this.radiotn_CONCERTOS_nome.TabIndex = 32;
+            this.radiotn_CONCERTOS_nome.TabStop = true;
+            this.radiotn_CONCERTOS_nome.Text = "nome";
+            this.radiotn_CONCERTOS_nome.UseVisualStyleBackColor = true;
+            this.radiotn_CONCERTOS_nome.CheckedChanged += new System.EventHandler(this.radiotn_CONCERTOS_nome_CheckedChanged);
             // 
             // groupBox_musicos
             // 
@@ -859,7 +944,7 @@ namespace interfaceBD
             this.groupBox_musicos.Controls.Add(this.radiotn_MUSICOS_nomeArt);
             this.groupBox_musicos.Controls.Add(this.radiotn_MUSICOS_nome);
             this.groupBox_musicos.Controls.Add(this.radiotn_MUSICOS_CC);
-            this.groupBox_musicos.Location = new System.Drawing.Point(12, 609);
+            this.groupBox_musicos.Location = new System.Drawing.Point(12, 592);
             this.groupBox_musicos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox_musicos.Name = "groupBox_musicos";
             this.groupBox_musicos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -877,6 +962,7 @@ namespace interfaceBD
             this.searchBtn_MUSICOS.TabIndex = 33;
             this.searchBtn_MUSICOS.Text = "Search";
             this.searchBtn_MUSICOS.UseVisualStyleBackColor = true;
+            this.searchBtn_MUSICOS.Click += new System.EventHandler(this.searchBtn_MUSICOS_Click);
             // 
             // searchbox_MUSICOS
             // 
@@ -922,76 +1008,6 @@ namespace interfaceBD
             this.radiotn_MUSICOS_CC.Text = "CC";
             this.radiotn_MUSICOS_CC.UseVisualStyleBackColor = true;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(304, 20);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(36, 17);
-            this.label13.TabIndex = 41;
-            this.label13.Text = "start";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(587, 30);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(312, 22);
-            this.textBox1.TabIndex = 32;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker3.Location = new System.Drawing.Point(346, 48);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.ShowUpDown = true;
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker3.TabIndex = 40;
-            // 
-            // radiobtn_CONCERTOS_banda
-            // 
-            this.radiobtn_CONCERTOS_banda.AutoSize = true;
-            this.radiobtn_CONCERTOS_banda.Location = new System.Drawing.Point(86, 31);
-            this.radiobtn_CONCERTOS_banda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radiobtn_CONCERTOS_banda.Name = "radiobtn_CONCERTOS_banda";
-            this.radiobtn_CONCERTOS_banda.Size = new System.Drawing.Size(69, 21);
-            this.radiobtn_CONCERTOS_banda.TabIndex = 33;
-            this.radiobtn_CONCERTOS_banda.TabStop = true;
-            this.radiobtn_CONCERTOS_banda.Text = "banda";
-            this.radiobtn_CONCERTOS_banda.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker4.Location = new System.Drawing.Point(346, 18);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.ShowUpDown = true;
-            this.dateTimePicker4.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker4.TabIndex = 39;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(275, 35);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(17, 16);
-            this.radioButton4.TabIndex = 38;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radiotn_CONCERTOS_nome
-            // 
-            this.radiotn_CONCERTOS_nome.AutoSize = true;
-            this.radiotn_CONCERTOS_nome.Location = new System.Drawing.Point(5, 30);
-            this.radiotn_CONCERTOS_nome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radiotn_CONCERTOS_nome.Name = "radiotn_CONCERTOS_nome";
-            this.radiotn_CONCERTOS_nome.Size = new System.Drawing.Size(64, 21);
-            this.radiotn_CONCERTOS_nome.TabIndex = 32;
-            this.radiotn_CONCERTOS_nome.TabStop = true;
-            this.radiotn_CONCERTOS_nome.Text = "nome";
-            this.radiotn_CONCERTOS_nome.UseVisualStyleBackColor = true;
-            // 
             // listBox_bandas
             // 
             this.listBox_bandas.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1001,8 +1017,9 @@ namespace interfaceBD
             this.listBox_bandas.Location = new System.Drawing.Point(12, 62);
             this.listBox_bandas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox_bandas.Name = "listBox_bandas";
-            this.listBox_bandas.Size = new System.Drawing.Size(1504, 526);
+            this.listBox_bandas.Size = new System.Drawing.Size(972, 526);
             this.listBox_bandas.TabIndex = 55;
+            this.listBox_bandas.SelectedIndexChanged += new System.EventHandler(this.listBox_bandas_SelectedIndexChanged);
             // 
             // listBox_musicos
             // 
@@ -1013,7 +1030,7 @@ namespace interfaceBD
             this.listBox_musicos.Location = new System.Drawing.Point(12, 62);
             this.listBox_musicos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox_musicos.Name = "listBox_musicos";
-            this.listBox_musicos.Size = new System.Drawing.Size(1505, 526);
+            this.listBox_musicos.Size = new System.Drawing.Size(1504, 526);
             this.listBox_musicos.TabIndex = 56;
             // 
             // groupBox_bandas
@@ -1023,14 +1040,15 @@ namespace interfaceBD
             this.groupBox_bandas.Controls.Add(this.radiobtn_BANDAS_genero);
             this.groupBox_bandas.Controls.Add(this.radiobtn_BANDAS_nome);
             this.groupBox_bandas.Controls.Add(this.radiobtn_BANDAS_id);
-            this.groupBox_bandas.Location = new System.Drawing.Point(12, 609);
+            this.groupBox_bandas.Location = new System.Drawing.Point(13, 811);
             this.groupBox_bandas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox_bandas.Name = "groupBox_bandas";
             this.groupBox_bandas.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox_bandas.Size = new System.Drawing.Size(1004, 71);
+            this.groupBox_bandas.Size = new System.Drawing.Size(1005, 70);
             this.groupBox_bandas.TabIndex = 35;
             this.groupBox_bandas.TabStop = false;
             this.groupBox_bandas.Text = "filtros";
+            this.groupBox_bandas.Enter += new System.EventHandler(this.groupBox_bandas_Enter);
             // 
             // searchbtn_BANDAS
             // 
@@ -1041,6 +1059,7 @@ namespace interfaceBD
             this.searchbtn_BANDAS.TabIndex = 33;
             this.searchbtn_BANDAS.Text = "Search";
             this.searchbtn_BANDAS.UseVisualStyleBackColor = true;
+            this.searchbtn_BANDAS.Click += new System.EventHandler(this.searchbtn_BANDAS_Click);
             // 
             // searchBox_BANDAS
             // 
@@ -1086,11 +1105,84 @@ namespace interfaceBD
             this.radiobtn_BANDAS_id.Text = "id";
             this.radiobtn_BANDAS_id.UseVisualStyleBackColor = true;
             // 
+            // Soundcheck_groupbox_concertos
+            // 
+            this.Soundcheck_groupbox_concertos.Controls.Add(this.label_duracao_soundcheck);
+            this.Soundcheck_groupbox_concertos.Controls.Add(this.dtpicker_horaini_soundcheck);
+            this.Soundcheck_groupbox_concertos.Controls.Add(this.dtpicker_duracao_soundcheck);
+            this.Soundcheck_groupbox_concertos.Controls.Add(this.id_soundcheck_input);
+            this.Soundcheck_groupbox_concertos.Controls.Add(this.label_horaini_soundcheck);
+            this.Soundcheck_groupbox_concertos.Controls.Add(this.id_soundcheck_label);
+            this.Soundcheck_groupbox_concertos.Controls.Add(this.dtpicker_dataini_soundcheck);
+            this.Soundcheck_groupbox_concertos.Controls.Add(this.label_dataini_soundcheck);
+            this.Soundcheck_groupbox_concertos.Location = new System.Drawing.Point(1026, 371);
+            this.Soundcheck_groupbox_concertos.Name = "Soundcheck_groupbox_concertos";
+            this.Soundcheck_groupbox_concertos.Size = new System.Drawing.Size(492, 201);
+            this.Soundcheck_groupbox_concertos.TabIndex = 57;
+            this.Soundcheck_groupbox_concertos.TabStop = false;
+            this.Soundcheck_groupbox_concertos.Text = "Soundcheck";
+            // 
+            // label_duracao_soundcheck
+            // 
+            this.label_duracao_soundcheck.AutoSize = true;
+            this.label_duracao_soundcheck.Location = new System.Drawing.Point(186, 17);
+            this.label_duracao_soundcheck.Name = "label_duracao_soundcheck";
+            this.label_duracao_soundcheck.Size = new System.Drawing.Size(62, 17);
+            this.label_duracao_soundcheck.TabIndex = 59;
+            this.label_duracao_soundcheck.Text = "Duração";
+            // 
+            // dtpicker_horaini_soundcheck
+            // 
+            this.dtpicker_horaini_soundcheck.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpicker_horaini_soundcheck.Location = new System.Drawing.Point(265, 116);
+            this.dtpicker_horaini_soundcheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpicker_horaini_soundcheck.Name = "dtpicker_horaini_soundcheck";
+            this.dtpicker_horaini_soundcheck.ShowUpDown = true;
+            this.dtpicker_horaini_soundcheck.Size = new System.Drawing.Size(225, 22);
+            this.dtpicker_horaini_soundcheck.TabIndex = 61;
+            // 
+            // dtpicker_duracao_soundcheck
+            // 
+            this.dtpicker_duracao_soundcheck.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpicker_duracao_soundcheck.Location = new System.Drawing.Point(190, 42);
+            this.dtpicker_duracao_soundcheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpicker_duracao_soundcheck.Name = "dtpicker_duracao_soundcheck";
+            this.dtpicker_duracao_soundcheck.ShowUpDown = true;
+            this.dtpicker_duracao_soundcheck.Size = new System.Drawing.Size(225, 22);
+            this.dtpicker_duracao_soundcheck.TabIndex = 58;
+            // 
+            // label_horaini_soundcheck
+            // 
+            this.label_horaini_soundcheck.AutoSize = true;
+            this.label_horaini_soundcheck.Location = new System.Drawing.Point(263, 91);
+            this.label_horaini_soundcheck.Name = "label_horaini_soundcheck";
+            this.label_horaini_soundcheck.Size = new System.Drawing.Size(95, 17);
+            this.label_horaini_soundcheck.TabIndex = 60;
+            this.label_horaini_soundcheck.Text = "Hora de Inicio";
+            // 
+            // dtpicker_dataini_soundcheck
+            // 
+            this.dtpicker_dataini_soundcheck.Location = new System.Drawing.Point(9, 116);
+            this.dtpicker_dataini_soundcheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpicker_dataini_soundcheck.Name = "dtpicker_dataini_soundcheck";
+            this.dtpicker_dataini_soundcheck.Size = new System.Drawing.Size(225, 22);
+            this.dtpicker_dataini_soundcheck.TabIndex = 59;
+            // 
+            // label_dataini_soundcheck
+            // 
+            this.label_dataini_soundcheck.AutoSize = true;
+            this.label_dataini_soundcheck.Location = new System.Drawing.Point(7, 91);
+            this.label_dataini_soundcheck.Name = "label_dataini_soundcheck";
+            this.label_dataini_soundcheck.Size = new System.Drawing.Size(94, 17);
+            this.label_dataini_soundcheck.TabIndex = 58;
+            this.label_dataini_soundcheck.Text = "Data de Inicio";
+            // 
             // EventoMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1528, 1055);
+            this.ClientSize = new System.Drawing.Size(1528, 978);
+            this.Controls.Add(this.Soundcheck_groupbox_concertos);
             this.Controls.Add(this.groupBox_Concertos);
             this.Controls.Add(this.listBox_musicos);
             this.Controls.Add(this.groupBox_musicos);
@@ -1099,12 +1191,11 @@ namespace interfaceBD
             this.Controls.Add(this.groupboxOverview);
             this.Controls.Add(this.horaini_concerto_dtpicker);
             this.Controls.Add(this.horaini_concerto_label);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataini_dtpicker_data_input);
             this.Controls.Add(this.dataini_concerto_label);
             this.Controls.Add(this.duracao_dtpicker);
             this.Controls.Add(this.duracao_dtpicker_hora);
-            this.Controls.Add(this.id_soundcheck_label);
-            this.Controls.Add(this.id_soundcheck_input);
             this.Controls.Add(this.id_evento_label);
             this.Controls.Add(this.id_evento_input);
             this.Controls.Add(this.id_banda_label);
@@ -1126,7 +1217,6 @@ namespace interfaceBD
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ccstageManager);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.ccpromotor);
             this.Controls.Add(this.datefim);
@@ -1162,6 +1252,8 @@ namespace interfaceBD
             this.groupBox_musicos.PerformLayout();
             this.groupBox_bandas.ResumeLayout(false);
             this.groupBox_bandas.PerformLayout();
+            this.Soundcheck_groupbox_concertos.ResumeLayout(false);
+            this.Soundcheck_groupbox_concertos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1204,10 +1296,10 @@ namespace interfaceBD
         private System.Windows.Forms.Button OveriewBtn;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.GroupBox groupboxOverview;
-        private System.Windows.Forms.RadioButton radiobtn_;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radiobtn_filtar_DateTime_OVERVIEW;
+        private System.Windows.Forms.RadioButton radiobtn_banda_OVERVIEW;
+        private System.Windows.Forms.RadioButton radiobtn_numdias_OVERVIEW;
+        private System.Windows.Forms.RadioButton radiobtn_nome_OVERVIEW;
         private System.Windows.Forms.TextBox searchbarOverview;
         private System.Windows.Forms.Button SearchBtnOverview;
         private System.Windows.Forms.Button concertobtn;
@@ -1235,7 +1327,7 @@ namespace interfaceBD
         private System.Windows.Forms.Label horaini_concerto_label;
         private System.Windows.Forms.GroupBox groupBox_Concertos;
         private System.Windows.Forms.Button searchBtn_CONCERTOS;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox search_bar_CONCERTOS;
         private System.Windows.Forms.RadioButton radiobtn_CONCERTOS_banda;
         private System.Windows.Forms.RadioButton radiotn_CONCERTOS_nome;
         private System.Windows.Forms.ListBox listBox_bandas;
@@ -1254,13 +1346,20 @@ namespace interfaceBD
         private System.Windows.Forms.RadioButton radiotn_MUSICOS_CC;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker filtros_end_date;
+        private System.Windows.Forms.DateTimePicker filtros_start_date;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.GroupBox Soundcheck_groupbox_concertos;
+        private System.Windows.Forms.Label label_duracao_soundcheck;
+        private System.Windows.Forms.DateTimePicker dtpicker_horaini_soundcheck;
+        private System.Windows.Forms.DateTimePicker dtpicker_duracao_soundcheck;
+        private System.Windows.Forms.Label label_horaini_soundcheck;
+        private System.Windows.Forms.DateTimePicker dtpicker_dataini_soundcheck;
+        private System.Windows.Forms.Label label_dataini_soundcheck;
     }
 }
 
