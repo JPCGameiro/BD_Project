@@ -10,22 +10,18 @@ CREATE PROCEDURE create_evento( @id VARCHAR(20), @nome VARCHAR(150), @numdias IN
 AS
 BEGIN
 	BEGIN TRY
-		BEGIN TRANSACTION
-			INSERT INTO EM.EVENTO VALUES(@id, @nome, @numdias, @dataini, @datafim, @numbilhetes, @cc_promotor, @dataproposta, @cc_stageManager);
-			PRINT 'Sucess'
-		COMMIT
+		INSERT INTO EM.EVENTO VALUES(@id, @nome, @numdias, @dataini, @datafim, @numbilhetes, @cc_promotor, @dataproposta, @cc_stageManager);
+		PRINT 'Sucess'
 	END TRY
 	BEGIN CATCH
 		PRINT ERROR_MESSAGE()
-		ROLLBACK
 	END CATCH
 END
 
-SELECT * FROM EM.EvENTO;
+SELECT * FROM EM.EVENTO;
 
 /* Teste */
-EXEC create_evento 12, 'Evento Teste', 1,'2021-06-01', '2021-06-01',1400, 2134022,'2020-01-30',12003011; --Rollback por causa do trigger eventos simultaneos
-EXEC create_evento 40, 'Evento Teste', 1,'2022-06-05', '2022-06-05',1400, 2134022,'2020-01-30',12003011; --Sucesso
+EXEC create_evento 12, 'Evento Teste', 1,'2021-06-01', '2021-06-01',1400, 2134022,'2020-01-30',12003011;
 
 
 
@@ -49,6 +45,9 @@ BEGIN
 END
 
 /* Teste */
+SELECT * FROM EM.CONCERTO;
+SELECT * FROM EM.SOUNDCHECK;
+SELECT * FROM EM.EVENTO;
 EXEC create_concerto 80, '2022-06-05 21:00:00', '04:00:00', 'ff', 40, 80, '00:30:00', '2022-06-05 13:00:00';
 
 
@@ -120,7 +119,7 @@ BEGIN
 			DECLARE @dataproposta_old DATE;
 			DECLARE @cc_stagemanager_old VARCHAR(12);
 
-			SELECT @id_old = id, @nome_old = nome, @numdias = numdias, @dataini_old = dataini, @datafim_old = datafim, @numBilhetes = numbilhetes, @cc_promotor_old = cc_promotor, @dataproposta = dataproposta, @cc_stagemanager_old = cc_stageManager
+			SELECT @id_old = id, @nome_old = nome, @numdias_old = numdias, @dataini_old = dataini, @datafim_old = datafim, @numBilhetes_old = numbilhetes, @cc_promotor_old = cc_promotor, @dataproposta_old = dataproposta, @cc_stagemanager_old = cc_stageManager
 			FROM EM.EVENTO
 			WHERE EM.EVENTO.id = @id;
 
@@ -188,7 +187,7 @@ END
 
 /* Teste */
 SELECT * FROM EM.EVENTO;
-EXEC alter_evento 1, 'Rock Fest', 2, '2018-06-01', '2018-06-02', 1400, 114444, '2017-12-02',32032541;
+EXEC alter_evento 1, 'RockFest', 2, '2018-06-02', '2018-06-03', 1450, 1134000, '2017-12-01',22032242;
 
 
 
@@ -200,7 +199,7 @@ EXEC alter_evento 1, 'Rock Fest', 2, '2018-06-01', '2018-06-02', 1400, 114444, '
 
 /*Editar um concerto */
 GO
-CREATE PROCEDURE alter_concerto( @id VARCHAR(20), @datatimeini DATETIME, @duracao TIME, @id_banda VARCHAR(20), @id_evento VARCHAR(20), @id_soundcheck VARCHAR(20))
+CREATE PROCEDURE alter_concerto( @id VARCHAR(20), @datatimeini DATETIME, @duracao TIME, @id_banda VARCHAR(20), @id_evento VARCHAR(20), @id_soundcheck VARCHAR(20), @soundcheck_duracao TIME, @soundcheck_datetime DATETIME)
 AS
 BEGIN
 	BEGIN TRY
@@ -211,10 +210,16 @@ BEGIN
 			DECLARE @idbanda_old AS VARCHAR(20);
 			DECLARE @idevento_old AS VARCHAR(20);
 			DECLARE @idsoundcheck_old AS VARCHAR(20);
+			DECLARE @soundcheckduracao_old AS TIME;
+			DECLARE @soundcheckdataime_old AS DATETIME;
 
-			SELECT @id_old = id, @datatimeini_old = datatimeini, @duracao_old = duracao, @idbanda_old = id_banda, @id_evento = id_evento, @id_soundcheck = id_soundcheck
+			SELECT @id_old = id, @datatimeini_old = datatimeini, @duracao_old = duracao, @idbanda_old = id_banda, @idevento_old = id_evento, @idsoundcheck_old = id_soundcheck
 			FROM EM.CONCERTO
 			WHERE EM.CONCERTO.id = @id;
+
+			SELECT @soundcheckduracao_old = duracao, @soundcheckdataime_old = datatimeini
+			FROM EM.SOUNDCHECK
+			WHERE id = @idsoundcheck_old
 
 			IF @id_old != @id
 			BEGIN
@@ -252,6 +257,17 @@ BEGIN
 				PRINT 'Concert soundcheck updated with success'
 			END
 
+			IF @soundcheckduracao_old != @soundcheck_duracao
+			BEGIN
+				UPDATE EM.SOUNDCHECK SET duracao = @soundcheck_duracao WHERE id=@idsoundcheck_old;
+				PRINT 'Soundcheck duration updated with success'
+			END
+
+			IF  @soundcheckdataime_old != @soundcheck_datetime
+			BEGIN
+				UPDATE EM.SOUNDCHECK SET datatimeini = @soundcheck_datetime WHERE id=@idsoundcheck_old;
+				PRINT 'Soundcheck start date updated with success'
+			END
 		COMMIT
 	END TRY
 	BEGIN CATCH
@@ -262,5 +278,5 @@ END
 
 /* Teste */
 SELECT * FROM EM.CONCERTO;
-EXEC alter_concerto 10, '2019-04-01 22:00:00', '02:00:00', 'gd', 2, 10;
-
+SELECT * FROM EM.SOUNDCHECK;
+EXEC alter_concerto 300, '2021-10-14 20:00:00', '02:00:00', 'ff', 13, 300, '00:35:00', '2021-09-14 10:00:00';

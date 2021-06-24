@@ -19,10 +19,11 @@ SELECT * FROM getEventosById(10);
 GO 
 CREATE FUNCTION getEventosByNome (@nome VARCHAR(250)) RETURNS TABLE AS
 	RETURN(SELECT * FROM EM.EVENTO
-		   WHERE nome = @nome)
+		   WHERE nome LIKE '%' + @nome + '%')
 GO
  --Teste
-SELECT * FROM getEventosByNome('RockFest');
+SELECT * FROM getEventosByNome('Foo');
+SELECT * FROM EM.EVENTO;
 
 
 
